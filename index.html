@@ -243,17 +243,11 @@
 
 <script>
 
+// Disable Right-Click
 document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-document.addEventListener("keydown", (e) => {
-    if (
-        e.key === "F12" || 
-        (e.ctrlKey && ["U", "S", "I", "J", "C"].includes(e.key)) || 
-        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key))
-    ) {
-        e.preventDefault();
-    }
-});
+// Disable All Keypress Events
+document.addEventListener("keydown", (e) => e.preventDefault());
 
 // Detect DevTools Open & Show "Accept Cookies" Message
 setInterval(() => {
@@ -262,7 +256,6 @@ setInterval(() => {
         setTimeout(() => window.location.href = "about:blank", 1500); // Redirect to blank page
     }
 }, 500);
-
 
 
 // Enhanced scrolling with smooth behavior
