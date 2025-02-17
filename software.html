@@ -174,19 +174,23 @@
         </div>
     </section>
     <script>
-        // Disable Right-Click
-document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-// Disable All Keypress Events
-document.addEventListener("keydown", (e) => e.preventDefault());
 
-// Detect DevTools Open & Show "Accept Cookies" Message
-setInterval(() => {
-    if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-        document.body.innerHTML = "<h1 style='text-align:center;color:red;'>Access Denied! Please Accept Cookies.</h1>";
-        setTimeout(() => window.location.href = "about:blank", 1500); // Redirect to blank page
+        document.addEventListener("keydown", function(event) {
+    if (event.ctrlKey && event.key === "u") {
+        event.preventDefault();
+        alert("View Source is disabled!");
     }
-}, 500);
+});
+
+
+        document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+    alert("Right-click is disabled!");
+});
+
+
+
 
     </script>
 </body>
