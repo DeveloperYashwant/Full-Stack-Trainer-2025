@@ -19,15 +19,6 @@
 
     <!-- Icon Set -->
         <link rel="icon" href="spring.png">
-document.addEventListener('contextmenu', e => e.preventDefault());
-
-document.addEventListener('keydown', e => {
-    if (e.key === 'F12' || 
-        (e.ctrlKey && ['U', 'S', 'I', 'J', 'C'].includes(e.key))) {
-        e.preventDefault();
-    }
-});
-
 </head>
 <body>
 <!-- Enhanced Navigation Bar -->
@@ -252,6 +243,26 @@ document.addEventListener('keydown', e => {
 
 <script>
 
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && ['U', 'S', 'I', 'J', 'C'].includes(e.key))) {
+        e.preventDefault();
+    }
+});
+
+// Detect DevTools Open & Show Cookie Message
+(function checkDevTools() {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function () {
+            document.body.innerHTML = "<h1 style='text-align:center;color:red;'>Access Denied! Please Accept Cookies.</h1>";
+            setTimeout(() => window.location.href = "about:blank", 1000); // Redirect to blank page
+        }
+    });
+    console.log('%c', element);
+})();
 
 
 
