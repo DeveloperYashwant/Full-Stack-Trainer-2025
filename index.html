@@ -19,17 +19,15 @@
 
     <!-- Icon Set -->
         <link rel="icon" href="spring.png">
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault()); 
-document.addEventListener('keydown', e => { 
-    if (e.key === 'F12' || (e.ctrlKey && ['U', 'S', 'I', 'J'].includes(e.key))) e.preventDefault(); 
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && ['U', 'S', 'I', 'J', 'C'].includes(e.key))) {
+        e.preventDefault();
+    }
 });
-setInterval(() => { 
-    if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) 
-        document.body.innerHTML = "<h1 style='text-align:center;color:red;'>Access Denied! Please Accept Cookies.</h1>";
-}, 500);
-    
-    </script>
+
 </head>
 <body>
 <!-- Enhanced Navigation Bar -->
