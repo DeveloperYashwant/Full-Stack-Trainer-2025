@@ -1,80 +1,85 @@
-    /* Custom Gradient Background */
-    .navbar {
-        margin-top:auto;
-        background: linear-gradient(45deg, #ff043,#f00ff78);
-        background-size: 20% 20%;
-        animation: gradientBG 10s ease infinite;
-        border-radius: 0px 45px 0px 45px;
-        padding: auto;
-        opacity: 0.6;
-        margin-top: 1%;
-     
-       
-    }
+   /* Custom Gradient Background */
+.navbar {
+    background: linear-gradient(45deg, #2c3e50, #3498db, #9b59b6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    border-radius: 30px;
+}
 
-    /* Gradient Animation */
-    @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+/* Gradient Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    /* Hover Effect for Links */
-    .nav-item .btn {
-        transition: all 0.3s ease;
-        border-width: 2px;
-        position: relative;
-        overflow: hidden;
-        color: #0056b3;
-    }
+/* Style for Navbar Links */
+.nav-item .btn {
+    transition: all 0.3s ease;
+    border-width: 2px;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    color: white;
+    background: transparent;
+    border: 1px solid transparent;
+}
 
-    .nav-item .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+/* Hover Effect for Links */
+.nav-item .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: #3498db; /* Adds a border color change on hover */
+}
 
-    /* Ripple Effect on Click */
-    .btn-outline-light:active:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 5px;
-        height: 5px;
-        background: rgba(255, 255, 255, 0.5);
+/* Ripple Effect on Click */
+.btn-outline-light:active:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        width: 200px;
+        height: 200px;
         opacity: 0;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        animation: ripple 0.6s ease-out;
     }
+}
 
-    @keyframes ripple {
-        0% { opacity: 1; }
-        100% { width: 200px; height: 200px; opacity: 0; }
+/* Active Link Animation */
+.nav-item .btn.active {
+    background: rgba(221, 80, 209, 0.2);
+    border-color: transparent;
+    animation: happyJump 0.4s ease;
+}
+
+/* Active Link Jump Effect */
+@keyframes happyJump {
+    0%, 100% {
+        transform: translateY(0);
     }
-
-    /* Active Link Animation */
-    .nav-item .btn.active {
-        background: rgba(255,255,255,0.2);
-        border-color: transparent;
-        animation: happyJump 0.4s ease;
+    50% {
+        transform: translateY(-5px);
     }
+}
 
-    @keyframes happyJump {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-5px); }
-    }
-
-    /* Hero Section Enhancements */
-    .hero {
-        background: linear-gradient(135deg, #E44D26 0%, #f4f4f4 50%, #6DB33F 100%);
-        padding: 160px 0 100px;
-    }
-
-    .animate-fadeInUp {
-        animation: fadeInUp 0.8s ease-out;
-    }
-
+/* Optional: Add focus states for accessibility */
+.nav-item .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(219, 166, 52, 0.5);
+}
 
 /* Whatsapp icon */
 
