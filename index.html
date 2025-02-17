@@ -19,6 +19,106 @@
 
     <!-- Icon Set -->
         <link rel="icon" href="spring.png">
+
+
+
+     <style>
+        /* Alert Box Styling */
+        .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            width: 300px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Alert Background */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        /* Alert Text */
+        .custom-alert-message {
+            font-size: 18px;
+            font-weight: bold;
+            color: red; /* Change text color */
+            margin-bottom: 15px;
+        }
+
+        /* OK Button */
+        .custom-alert-button {
+            padding: 10px 20px;
+            border: none;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .custom-alert-button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Alert Box -->
+    <div class="custom-alert-overlay" id="alertOverlay"></div>
+    <div class="custom-alert" id="alertBox">
+        <div class="custom-alert-message" id="alertMessage">Custom Alert Message</div>
+        <button class="custom-alert-button" onclick="closeAlert()">OK</button>
+    </div>
+
+    <script>
+        function showAlert(message) {
+            document.getElementById("alertMessage").innerHTML = message;
+            document.getElementById("alertBox").style.display = "block";
+            document.getElementById("alertOverlay").style.display = "block";
+        }
+
+        function closeAlert() {
+            document.getElementById("alertBox").style.display = "none";
+            document.getElementById("alertOverlay").style.display = "none";
+        }
+
+        // Disable certain keys with custom alert
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
+                event.preventDefault();
+                showAlert("Action not allowed!");
+            }
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                showAlert("Developer Tools are disabled!");
+            }
+        });
+
+        // Disable right-click with custom alert
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            showAlert("Right-click is disabled!");
+        });
+    </script>
+
+
+    
 </head>
 <body>
 <!-- Enhanced Navigation Bar -->
@@ -242,21 +342,6 @@
 <script src="scripts.js"></script>
 
 <script>
-
-// Disable Right-Click
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-
-// Disable All Keypress Events
-document.addEventListener("keydown", (e) => e.preventDefault());
-
-// Detect DevTools Open & Show "Accept Cookies" Message
-setInterval(() => {
-    if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-        document.body.innerHTML = "<h1 style='text-align:center;color:red;'>Access Denied! Please Accept Cookies.</h1>";
-        setTimeout(() => window.location.href = "about:blank", 1500); // Redirect to blank page
-    }
-}, 500);
-
 
 // Enhanced scrolling with smooth behavior
 function scrollHorizontally(offset) {
