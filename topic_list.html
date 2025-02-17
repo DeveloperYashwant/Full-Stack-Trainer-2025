@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Student Topic List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="logo.png">
+    <style>
+
+        
+        /* Add back button styling */
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 200;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            padding: 10px 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #6a1b9a !important;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .back-button i {
+            font-size: 28px;
+            vertical-align: middle;
+        }
+
+        /* Adjust header position for mobile */
+        @media (max-width: 768px) {
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 12px;
+            }
+            .back-button i {
+                font-size: 24px;
+            }
+        }
+
+        /* Original Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .c1 {
+            color: #4a148c;
+            font-weight: bold;
+            font-size: 20px;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+        h1 {
+            color:blue;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            background: linear-gradient(orange,white,green);
+            padding: 15px;
+            margin: 0;
+            box-shadow: 0 4px 15px rgba(106,27,154,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        details {
+            margin: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardEntrance 0.6s ease forwards;
+        }
+        summary {
+            font-size: 25px;
+            color: #2e7d32;
+            font-family: 'Arial Black', sans-serif;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        }
+        a {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            color: white;
+            font-size: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gradientPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        details:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(106,27,154,0.2);
+        }
+
+        details[open] {
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            transform: scale(1.02);
+        }
+
+        details[open] summary {
+            color: #6a1b9a;
+            background: linear-gradient(145deg, #f3e5f5, #e1bee7);
+        }
+
+        summary:hover {
+            background: linear-gradient(145deg, #e1bee7, #ce93d8);
+            color: #4a148c;
+        }
+
+        summary::after {
+            content: "➤";
+            float: right;
+            transition: transform 0.3s ease;
+            color: #6a1b9a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        a:hover {
+            animation: pulse 1s infinite;
+            color: #e1bee7;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Staggered Animations */
+        details:nth-child(1) { animation-delay: 0.1s; }
+        details:nth-child(2) { animation-delay: 0.2s; }
+        details:nth-child(3) { animation-delay: 0.3s; }
+        details:nth-child(4) { animation-delay: 0.4s; }
+        details:nth-child(5) { animation-delay: 0.5s; }
+        details:nth-child(6) { animation-delay: 0.6s; }
+        /* Continue pattern for remaining items */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            details {
+                margin: 10px;
+            }
+            summary {
+                font-size: 20px;
+            }
+            .c1 {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+        <!-- Add back button at the top -->
+        <a href="index.html" class="back-button" title="Back to Home">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    
+    <h1>  Tech Learning Hub - Topic List</h1>
+
+    <!-- C Programming -->
+    <details>
+        <summary>C Programming</summary>
+        <div class="c1">
+            <br>1] Intro of C<br>
+            2] Data Types and Variables<br>
+            3] Operators<br>
+            4] Decision Making<br>
+            5] Loops<br>
+            6] Functions<br>
+            7] Arrays<br>
+            8] Pointers<br>
+            9] Structures and Unions<br>
+            10] File Handling<br>
+        </div>
+    </details>
+
+    <!-- C++ Programming -->
+    <details>
+        <summary>C++ Programming</summary>
+        <div class="c1">
+            <br>1] Intro to OOP<br>
+            2] Classes and Objects<br>
+            3] Inheritance<br>
+            4] Polymorphism<br>
+            5] Templates<br>
+            6] STL (Standard Template Library)<br>
+            7] File Handling<br>
+            8] Exception Handling<br>
+        </div>
+    </details>
+
+    <!-- Python Programming -->
+    <details>
+        <summary>Python Programming</summary>
+        <div class="c1">
+            <br>1] Intro to Python<br>
+            2] Data Types and Variables<br>
+            3] Control Structures<br>
+            4] Functions<br>
+            5] OOP in Python<br>
+            6] File Handling<br>
+            7] Modules and Packages<br>
+            8] Exception Handling<br>
+            9] Web Scraping<br>
+            10] Data Science Basics<br>
+        </div>
+    </details>
+
+    <!-- Web Development -->
+    <details>
+        <summary>Web Development</summary>
+        <div class="c1">
+            <br>1] HTML5 and CSS3<br>
+            2] JavaScript (ES6+)<br>
+            3] Responsive Design<br>
+            4] Bootstrap<br>
+            5] React.js<br>
+            6] Node.js<br>
+            7] Express.js<br>
+            8] MongoDB<br>
+            9] REST APIs<br>
+            10] Deployment (Netlify, Vercel, Heroku)<br>
+        </div>
+    </details>
+
+    <!-- MERN Stack -->
+    <details>
+        <summary>MERN Stack</summary>
+        <div class="c1">
+            <br>1] Intro to MERN Stack<br>
+            2] MongoDB (NoSQL Database)<br>
+            3] Express.js (Backend Framework)<br>
+            4] React.js (Frontend Library)<br>
+            5] Node.js (JavaScript Runtime)<br>
+            6] Building RESTful APIs<br>
+            7] Authentication (JWT)<br>
+            8] Deployment (AWS, Heroku)<br>
+        </div>
+    </details>
+
+    <!-- Angular -->
+    <details>
+        <summary>Angular</summary>
+        <div class="c1">
+            <br>1] Intro to Angular<br>
+            2] Angular CLI<br>
+            3] Components and Templates<br>
+            4] Data Binding<br>
+            5] Directives<br>
+            6] Pipes<br>
+            7] Services and Dependency Injection<br>
+            8] Routing and Navigation<br>
+            9] Forms (Template-driven and Reactive)<br>
+            10] HTTP Client and REST API Integration<br>
+            11] State Management (NgRx)<br>
+            12] Deployment<br>
+        </div>
+    </details>
+
+    <!-- Flask -->
+    <details>
+        <summary>Flask</summary>
+        <div class="c1">
+            <br>1] Intro to Flask<br>
+            2] Flask Setup and Installation<br>
+            3] Routing and Views<br>
+            4] Templates (Jinja2)<br>
+            5] Forms and Validation<br>
+            6] Working with Databases (SQLAlchemy)<br>
+            7] RESTful APIs with Flask<br>
+            8] Authentication and Authorization<br>
+            9] Flask Extensions (Flask-WTF, Flask-Login)<br>
+            10] Deployment (Heroku, AWS, Docker)<br>
+        </div>
+    </details>
+
+    <!-- Django -->
+    <details>
+        <summary>Django</summary>
+        <div class="c1">
+            <br>1] Intro to Django<br>
+            2] Django Setup and Installation<br>
+            3] Django Project Structure<br>
+            4] Models and Databases (ORM)<br>
+            5] Views and Templates<br>
+            6] Forms and Validation<br>
+            7] Django Admin Panel<br>
+            8] User Authentication<br>
+            9] RESTful APIs with Django REST Framework<br>
+            10] Django Middleware<br>
+            11] Django Security Best Practices<br>
+            12] Deployment (Heroku, AWS, Docker)<br>
+        </div>
+    </details>
+
+    <!-- C#.NET -->
+    <details>
+        <summary>C#.NET</summary>
+        <div class="c1">
+            <br>1] Intro to C# and .NET Framework<br>
+            2] Data Types and Variables<br>
+            3] Operators<br>
+            4] Control Structures<br>
+            5] OOP in C# (Classes, Objects, Inheritance)<br>
+            6] Polymorphism and Abstraction<br>
+            7] Exception Handling<br>
+            8] Collections and Generics<br>
+            9] LINQ (Language Integrated Query)<br>
+            10] File Handling<br>
+            11] ASP.NET Core (MVC and Web API)<br>
+            12] Entity Framework Core<br>
+            13] Deployment (IIS, Azure)<br>
+        </div>
+    </details>
+
+    <!-- Java -->
+    <details>
+        <summary>Java</summary>
+        <div class="c1">
+            <br>1] Intro to Java<br>
+            2] Data Types and Variables<br>
+            3] Operators<br>
+            4] Control Structures<br>
+            5] OOP in Java (Classes, Objects, Inheritance)<br>
+            6] Polymorphism and Abstraction<br>
+            7] Exception Handling<br>
+            8] Collections Framework<br>
+            9] File Handling<br>
+            10] Multithreading<br>
+            11] JDBC (Java Database Connectivity)<br>
+            12] Java 8 Features (Lambda, Streams)<br>
+        </div>
+    </details>
+
+    <!-- Advanced Java -->
+    <details>
+        <summary>Advanced Java</summary>
+        <div class="c1">
+            <br>1] Servlets<br>
+            2] JSP (Java Server Pages)<br>
+            3] JDBC Advanced Concepts<br>
+            4] Session Tracking (Cookies, Session)<br>
+            5] Hibernate (ORM Framework)<br>
+            6] Spring Framework (Core, MVC)<br>
+            7] RESTful Web Services<br>
+            8] Java EE (Enterprise Edition)<br>
+            9] Design Patterns in Java<br>
+            10] Microservices with Spring Boot<br>
+        </div>
+    </details>
+
+    <!-- Spring Boot -->
+    <details>
+        <summary>Spring Boot</summary>
+        <div class="c1">
+            <br>1] Intro to Spring Boot<br>
+            2] Spring Boot Architecture<br>
+            3] Dependency Injection<br>
+            4] RESTful APIs with Spring Boot<br>
+            5] Spring Data JPA<br>
+            6] Spring Security<br>
+            7] Exception Handling in Spring Boot<br>
+            8] Logging and Monitoring<br>
+            9] Microservices with Spring Boot<br>
+            10] Deployment (Docker, Kubernetes)<br>
+        </div>
+    </details>
+
+    <!-- Data Science -->
+    <details>
+        <summary>Data Science</summary>
+        <div class="c1">
+            <br>1] Intro to Data Science<br>
+            2] Python for Data Science<br>
+            3] NumPy and Pandas<br>
+            4] Data Visualization (Matplotlib, Seaborn)<br>
+            5] Machine Learning Basics<br>
+            6] Scikit-Learn<br>
+            7] Data Cleaning and Preprocessing<br>
+            8] Big Data Basics<br>
+        </div>
+    </details>
+
+    <!-- Machine Learning -->
+    <details>
+        <summary>Machine Learning</summary>
+        <div class="c1">
+            <br>1] Intro to Machine Learning<br>
+            2] Supervised Learning<br>
+            3] Unsupervised Learning<br>
+            4] Neural Networks<br>
+            5] TensorFlow and Keras<br>
+            6] Natural Language Processing (NLP)<br>
+            7] Computer Vision<br>
+            8] Model Deployment<br>
+        </div>
+    </details>
+
+    <!-- Cloud Computing -->
+    <details>
+        <summary>Cloud Computing</summary>
+        <div class="c1">
+            <br>1] Intro to Cloud Computing<br>
+            2] AWS (Amazon Web Services)<br>
+            3] Microsoft Azure<br>
+            4] Google Cloud Platform (GCP)<br>
+            5] Docker and Kubernetes<br>
+            6] Serverless Computing<br>
+            7] Cloud Security<br>
+        </div>
+    </details>
+
+    <!-- DevOps -->
+    <details>
+        <summary>DevOps</summary>
+        <div class="c1">
+            <br>1] Intro to DevOps<br>
+            2] CI/CD Pipelines<br>
+            3] Jenkins<br>
+            4] Git and GitHub<br>
+            5] Docker<br>
+            6] Kubernetes<br>
+            7] Monitoring and Logging<br>
+        </div>
+    </details>
+
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('summary').forEach(summary => {
+            summary.addEventListener('click', () => {
+                const details = summary.parentElement;
+                if (details.open) {
+                    details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add intersection observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('details').forEach(details => {
+            observer.observe(details);
+        });
+    </script>
+
+
+</body>
+</html>

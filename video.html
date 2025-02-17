@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Listing</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .course-card {
+            transition: 0.3s ease-in-out;
+        }
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+        .course-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .session-video {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .session-video img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Yash Software Solutions</a>
+        </div>
+    </nav>
+
+    <!-- Search & Filter -->
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search courses...">
+            </div>
+            <div class="col-md-6">
+                <select id="categoryFilter" class="form-select">
+                    <option value="all">All Categories</option>
+                    <option value="java">Java Courses</option>
+                    <option value="dotnet">.NET Courses</option>
+                    <option value="webdesign">Web Design Courses</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Listing -->
+    <div class="container">
+        <div class="row" id="courseContainer">
+            <!-- Courses will be injected here -->
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Video Session</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const courses = [
+            { 
+                title: "Java Basics", category: "java", img: "assets/images/java.jpg", 
+                sessions: [
+                    { title: "Introduction to Java", videoId: "Oe421EPjeBE" },
+                    { title: "Java Variables & Data Types", videoId: "eIrMbAQSU34" }
+                ]
+            },
+            { 
+                title: "Advanced Java", category: "java", img: "assets/images/java.jpg", 
+                sessions: [
+                    { title: "Java Collections Framework", videoId: "9XJicRt_FaI" },
+                    { title: "Multithreading in Java", videoId: "Y6Xr--NSz4g" }
+                    
+                ]
+            },
+            { 
+                title: "ASP.NET Core", category: "dotnet", img: "assets/images/dotnet.jpg", 
+                sessions: [
+                    { title: "Introduction to ASP.NET Core", videoId: "XJslwS4i2xE" },
+                    { title: "MVC in ASP.NET Core", videoId: "A_KcOCaEwUI" }
+                ]
+            },
+            { 
+                title: "C# Programming", category: "dotnet", img: "assets/images/dotnet.jpg", 
+                sessions: [
+                    { title: "C# Basics for Beginners", videoId: "gfkTfcpWqAY" },
+                    { title: "Object-Oriented Programming in C#", videoId: "ZsXo5kUFdKw" }
+                ]
+            },
+            { 
+                title: "HTML & CSS Fundamentals", category: "webdesign", img: "assets/images/webdesign.jpg", 
+                sessions: [
+                    { title: "HTML Basics", videoId: "UB1O30fR-EE" },
+                    { title: "CSS Basics", videoId: "yfoY53QXEnI" }
+                ]
+            },
+            { 
+                title: "Responsive Web Design", category: "webdesign", img: "assets/images/webdesign.jpg", 
+                sessions: [
+                    { title: "What is Responsive Design?", videoId: "gLfuZrrfKes" },
+                    { title: "CSS Media Queries Explained", videoId: "5GyGK09sdDE" }
+                ]
+            }
+        ];
+
+        function displayCourses(filteredCourses) {
+            const container = document.getElementById("courseContainer");
+            container.innerHTML = "";
+            filteredCourses.forEach(course => {
+                let sessionsHtml = course.sessions.map(session => `
+                    <div class="session-video" onclick="openVideo('${session.videoId}')">
+                        <img src="https://img.youtube.com/vi/${session.videoId}/0.jpg" alt="${session.title}">
+                        <p class="text-center">${session.title}</p>
+                    </div>
+                `).join("");
+
+                container.innerHTML += `
+                    <div class="col-md-4 my-3">
+                        <div class="card course-card">
+                            <img src="${course.img}" class="card-img-top course-img" alt="${course.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${course.title}</h5>
+                                <p class="card-text">${course.category.toUpperCase()}</p>
+                                <div class="sessions">
+                                    ${sessionsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openVideo(videoId) {
+            const videoFrame = document.getElementById("videoFrame");
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+            const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+            videoModal.show();
+        }
+
+        document.getElementById("searchInput").addEventListener("input", function() {
+            const searchText = this.value.toLowerCase();
+            const filtered = courses.filter(course => 
+                course.title.toLowerCase().includes(searchText) || 
+                course.sessions.some(session => session.title.toLowerCase().includes(searchText))
+            );
+            displayCourses(filtered);
+        });
+
+        document.getElementById("categoryFilter").addEventListener("change", function() {
+            const category = this.value;
+            const filtered = category === "all" ? courses : courses.filter(course => course.category === category);
+            displayCourses(filtered);
+        });
+
+        // Load courses on page load
+        displayCourses(courses);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

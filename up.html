@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Learning Hub - Topic List</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6a1b9a;
+            --secondary-color: #4a148c;
+            --accent-color: #2e7d32;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            margin: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(106, 27, 154, 0.2);
+        }
+
+        .topic-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white !important;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .topic-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .topic-list {
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding-left: 40px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-card {
+            animation: cardEntrance 0.6s ease forwards;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.3);
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn" title="Back to Home">
+        <i class="fas fa-arrow-left text-purple" style="font-size: 1.5rem;"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="sticky-header py-3 mb-4">
+        <h1 class="text-center text-white mb-0">
+            <i class="fas fa-book-open me-3"></i>
+            Tech Learning Hub - Topic List
+        </h1>
+    </header>
+
+    <main class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+            <!-- C Programming -->
+            <div class="topic-card animate-card">
+                <div class="card-body">
+                    <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                        data-bs-toggle="collapse" 
+                        href="#cProgramming"
+                        role="button">
+                        <i class="fab fa-cuttlefish topic-icon"></i>
+                        C Programming
+                    </h2>
+                    <div class="collapse show" id="cProgramming">
+                        <div class="card-text p-3 topic-list">
+                            <div>1] Intro of C</div>
+                            <div>2] Data Types and Variables</div>
+                            <div>3] Operators</div>
+                            <div>4] Decision Making</div>
+                            <div>5] Loops</div>
+                            <div>6] Functions</div>
+                            <div>7] Arrays</div>
+                            <div>8] Pointers</div>
+                            <div>9] Structures and Unions</div>
+                            <div>10] File Handling</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- C++ Programming -->
+            <div class="topic-card animate-card">
+                <div class="card-body">
+                    <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                        data-bs-toggle="collapse" 
+                        href="#cppProgramming">
+                        <i class="fab fa-cuttlefish topic-icon"></i>
+                        <i class="fab fa-plus plus-icon"></i>
+                        C++ Programming
+                    </h2>
+                    <div class="collapse" id="cppProgramming">
+                        <div class="card-text p-3 topic-list">
+                            <div>1] Intro to OOP</div>
+                            <div>2] Classes and Objects</div>
+                            <div>3] Inheritance</div>
+                            <div>4] Polymorphism</div>
+                            <div>5] Templates</div>
+                            <div>6] STL (Standard Template Library)</div>
+                            <div>7] File Handling</div>
+                            <div>8] Exception Handling</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Python Programming -->
+            <div class="topic-card animate-card">
+                <div class="card-body">
+                    <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                        data-bs-toggle="collapse" 
+                        href="#pythonProgramming">
+                        <i class="fab fa-python topic-icon"></i>
+                        Python Programming
+                    </h2>
+                    <div class="collapse" id="pythonProgramming">
+                        <div class="card-text p-3 topic-list">
+                            <div>1] Intro to Python</div>
+                            <div>2] Data Types and Variables</div>
+                            <div>3] Control Structures</div>
+                            <div>4] Functions</div>
+                            <div>5] OOP in Python</div>
+                            <div>6] File Handling</div>
+                            <div>7] Modules and Packages</div>
+                            <div>8] Exception Handling</div>
+                            <div>9] Web Scraping</div>
+                            <div>10] Data Science Basics</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Continue with other topics following the same pattern -->
+            <!-- Web Development -->
+            <div class="topic-card animate-card">
+                <div class="card-body">
+                    <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                        data-bs-toggle="collapse" 
+                        href="#webDevelopment">
+                        <i class="fab fa-html5 topic-icon"></i>
+                        Web Development
+                    </h2>
+                    <div class="collapse" id="webDevelopment">
+                        <div class="card-text p-3 topic-list">
+                            <div>1] HTML5 and CSS3</div>
+                            <div>2] JavaScript (ES6+)</div>
+                            <div>3] Responsive Design</div>
+                            <div>4] Bootstrap</div>
+                            <div>5] React.js</div>
+                            <div>6] Node.js</div>
+                            <div>7] Express.js</div>
+                            <div>8] MongoDB</div>
+                            <div>9] REST APIs</div>
+                            <div>10] Deployment (Netlify, Vercel, Heroku)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- MERN Stack  -->
+        <div class="topic-card animate-card">
+            <div class="card-body">
+                <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                    data-bs-toggle="collapse" 
+                    href="#mernStack"
+                    role="button">
+                    <i class="fab fa-react topic-icon"></i>
+                    MERN Stack
+                </h2>
+                <div class="collapse" id="mernStack">
+                    <div class="card-text p-3 topic-list">
+                        <div>1] Intro to MERN Stack</div>
+                        <div>2] MongoDB (NoSQL Database)</div>
+                        <div>3] Express.js (Backend Framework)</div>
+                        <div>4] React.js (Frontend Library)</div>
+                        <div>5] Node.js (JavaScript Runtime)</div>
+                        <div>6] Building RESTful APIs</div>
+                        <div>7] Authentication (JWT)</div>
+                        <div>8] Deployment (AWS, Heroku)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Angular -->
+        <div class="topic-card animate-card">
+            <div class="card-body">
+                <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                    data-bs-toggle="collapse" 
+                    href="#angular"
+                    role="button">
+                    <i class="fab fa-angular topic-icon"></i>
+                    Angular
+                </h2>
+                <div class="collapse" id="angular">
+                    <div class="card-text p-3 topic-list">
+                        <div>1] Intro to Angular</div>
+                        <div>2] Angular CLI</div>
+                        <div>3] Components and Templates</div>
+                        <div>4] Data Binding</div>
+                        <div>5] Directives</div>
+                        <div>6] Pipes</div>
+                        <div>7] Services and Dependency Injection</div>
+                        <div>8] Routing and Navigation</div>
+                        <div>9] Forms (Template-driven and Reactive)</div>
+                        <div>10] HTTP Client and REST API Integration</div>
+                        <div>11] State Management (NgRx)</div>
+                        <div>12] Deployment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flask -->
+        <div class="topic-card animate-card">
+            <div class="card-body">
+                <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                    data-bs-toggle="collapse" 
+                    href="#flask"
+                    role="button">
+                    <i class="fas fa-flask topic-icon"></i>
+                    Flask
+                </h2>
+                <div class="collapse" id="flask">
+                    <div class="card-text p-3 topic-list">
+                        <div>1] Intro to Flask</div>
+                        <div>2] Flask Setup and Installation</div>
+                        <div>3] Routing and Views</div>
+                        <div>4] Templates (Jinja2)</div>
+                        <div>5] Forms and Validation</div>
+                        <div>6] Working with Databases (SQLAlchemy)</div>
+                        <div>7] RESTful APIs with Flask</div>
+                        <div>8] Authentication and Authorization</div>
+                        <div>9] Flask Extensions (Flask-WTF, Flask-Login)</div>
+                        <div>10] Deployment (Heroku, AWS, Docker)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Django -->
+        <div class="topic-card animate-card">
+            <div class="card-body">
+                <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                    data-bs-toggle="collapse" 
+                    href="#django"
+                    role="button">
+                    <i class="fab fa-python topic-icon"></i>
+                    Django
+                </h2>
+                <div class="collapse" id="django">
+                    <div class="card-text p-3 topic-list">
+                        <div>1] Intro to Django</div>
+                        <div>2] Django Setup and Installation</div>
+                        <div>3] Django Project Structure</div>
+                        <div>4] Models and Databases (ORM)</div>
+                        <div>5] Views and Templates</div>
+                        <div>6] Forms and Validation</div>
+                        <div>7] Django Admin Panel</div>
+                        <div>8] User Authentication</div>
+                        <div>9] RESTful APIs with Django REST Framework</div>
+                        <div>10] Django Middleware</div>
+                        <div>11] Django Security Best Practices</div>
+                        <div>12] Deployment (Heroku, AWS, Docker)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue with remaining topics following same pattern -->
+        <!-- C#.NET -->
+        <div class="topic-card animate-card">
+            <div class="card-body">
+                <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                    data-bs-toggle="collapse" 
+                    href="#csharpNet"
+                    role="button">
+                    <i class="fab fa-microsoft topic-icon"></i>
+                    C#.NET
+                </h2>
+                <div class="collapse" id="csharpNet">
+                    <div class="card-text p-3 topic-list">
+                        <!-- C#.NET content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Java -->
+        <div class="topic-card animate-card">
+            <div class="card-body">
+                <h2 class="card-title topic-header d-flex align-items-center p-3 mb-0" 
+                    data-bs-toggle="collapse" 
+                    href="#java"
+                    role="button">
+                    <i class="fab fa-java topic-icon"></i>
+                    Java
+                </h2>
+                <div class="collapse" id="java">
+                    <div class="card-text p-3 topic-list">
+                        <!-- Java content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <!-- Continue adding all other topics following the same structure -->
+            <!-- Ensure each topic has unique ID for collapse target -->
+            <!-- Use appropriate Font Awesome icons for each technology -->
+    
+        </div>
+    </main>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Animate cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.topic-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add smooth scroll
+        document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullStack Trainer - Tech Courses</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #2d3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: var(--text-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            min-width: 300px;
+        }
+
+        .filter-select {
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .course-title {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .enroll-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .enroll-btn:hover {
+            opacity: 0.9;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-filter {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FullStack Trainer</h1>
+            <p>Learn in-demand technologies</p>
+        </div>
+
+        <div class="search-filter">
+            <input type="text" 
+                   class="search-input" 
+                   placeholder="Search courses..."
+                   id="searchInput">
+            <select class="filter-select" id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="cloud">Cloud</option>
+                <option value="mobile">Mobile</option>
+            </select>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            <!-- Courses will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const courses = [
+            {
+                title: "React JS",
+                subtitle: "Frontend Library",
+                category: "frontend",
+            },
+            {
+                title: "Node JS",
+                subtitle: "Backend Runtime",
+                category: "backend",
+            },
+            {
+                title: "Python Programming",
+                subtitle: "General Purpose Programming",
+                category: "backend",
+            },
+            {
+                title: "AWS",
+                subtitle: "Cloud Computing",
+                category: "cloud",
+            },
+            {
+                title: "Flutter",
+                subtitle: "Mobile Development",
+                category: "mobile",
+            },
+            {
+                title: "Docker",
+                subtitle: "Containerization",
+                category: "cloud",
+            }
+        ];
+
+        // DOM Elements
+        const coursesGrid = document.getElementById('coursesGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+
+        // Initialize courses
+        function initializeCourses() {
+            coursesGrid.innerHTML = courses.map(course => `
+                <div class="course-card" data-category="${course.category}">
+                    <h3 class="course-title">${course.title}</h3>
+                    <p class="course-subtitle">${course.subtitle}</p>
+                    <button class="enroll-btn">Enroll Now</button>
+                </div>
+            `).join('');
+        }
+
+        // Filter courses
+        function filterCourses() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            const cards = document.querySelectorAll('.course-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('.course-title').textContent.toLowerCase();
+                const subtitle = card.querySelector('.course-subtitle').textContent.toLowerCase();
+                const category = card.dataset.category;
+
+                const matchesSearch = title.includes(searchTerm) || subtitle.includes(searchTerm);
+                const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+                if(matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', filterCourses);
+        categoryFilter.addEventListener('change', filterCourses);
+
+        // Initial load
+        initializeCourses();
+        filterCourses();
+    </script>
+</body>
+</html>

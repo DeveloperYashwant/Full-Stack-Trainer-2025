@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Downloads</title>
+    <style>
+        table {
+            border: 10px solid orange;
+            padding: 12px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 4px dotted purple;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            font-size: 20px;
+            font-family: Algerian, sans-serif;
+            color: white;
+            background: skyblue;
+        }
+
+        td {
+            font-size: 16px;
+            color: black;
+        }
+
+        a.download-btn {
+            color: white;
+            background: green;
+            padding: 5px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        a.download-btn:hover {
+            background: darkgreen;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: red;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: darkred;
+        }
+
+        /* Responsive Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        /* Alternate Row Color */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Hover Effect */
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <section class="about-section">
+        <div class="container">
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th scope="col">Software</th>
+                        <th scope="col">Downloads</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Anaconda3</strong></td>
+                        <td><a href="https://www.anaconda.com/products/distribution" class="download-btn" aria-label="Download Anaconda3">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Python</strong></td>
+                        <td><a href="https://www.python.org/downloads/" class="download-btn" aria-label="Download Python">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PyCharm</strong></td>
+                        <td><a href="https://www.jetbrains.com/pycharm/download/" class="download-btn" aria-label="Download PyCharm">Download</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Back Button -->
+            <button class="back-button" onclick="history.back()">Back</button>
+        </div>
+    </section>
+</body>
+</html>

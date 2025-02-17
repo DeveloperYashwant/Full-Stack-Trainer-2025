@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Course Listing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2d3092;
+            --secondary-color: #f8f9fa;
+        }
+
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .course-image {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover .course-image {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            padding: 0.5em 0.75em;
+        }
+
+        .price-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .filter-section {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .course-animation {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <h1 class="text-center mb-5 display-4 fw-bold text-primary">Professional Courses</h1>
+    
+<!-- Course Listing Section -->
+<section id="courses" class="courses py-5">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="display-5 fw-bold mb-3">Explore Our Courses</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <p class="text-muted">Master in-demand technologies with industry experts</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="row mb-4 g-3" data-aos="fade-up">
+            <div class="col-md-6">
+                <div class="input-group shadow-sm">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="fas fa-search text-muted"></i>
+                    </span>
+                    <input type="text" 
+                           class="form-control border-start-0" 
+                           id="searchInput"
+                           placeholder="Search courses...">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select shadow-sm" id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="frontend">Frontend Development</option>
+                    <option value="backend">Backend Development</option>
+                    <option value="fullstack">Full Stack Development</option>
+                    <option value="database">Database & Cloud</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="row g-4" id="coursesGrid">
+            <!-- Course Card 1 -->
+            <div class="col-lg-4 col-md-6" data-category="frontend" data-aos="zoom-in">
+                <div class="course-card h-100 shadow-sm">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="assets/images/html-css-js.jpg" 
+                             class="img-fluid" 
+                             alt="Frontend Development"
+                             loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary">Frontend</span>
+                            <span class="text-success fw-bold">₹15,999</span>
+                        </div>
+                        <h5 class="card-title">Modern Web Development</h5>
+                        <p class="card-text text-muted">Master HTML5, CSS3, JavaScript, and modern frameworks like React</p>
+                        <button class="btn btn-outline-primary w-100">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="col-lg-4 col-md-6" data-category="backend" data-aos="zoom-in" data-aos-delay="100">
+                <div class="course-card h-100 shadow-sm">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="assets/images/java-spring.jpg" 
+                             class="img-fluid" 
+                             alt="Backend Development"
+                             loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-danger">Backend</span>
+                            <span class="text-success fw-bold">₹18,999</span>
+                        </div>
+                        <h5 class="card-title">Java & Spring Boot</h5>
+                        <p class="card-text text-muted">Complete backend development with Java, Spring Boot, and Microservices</p>
+                        <button class="btn btn-outline-danger w-100">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more course cards following the same structure -->
+        </div>
+    </div>
+</section>
+
+<style>
+.courses {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.course-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    background: #f8f9fa;
+    transition: transform 0.3s ease;
+}
+
+.card-img-top img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover .card-img-top img {
+    transform: scale(1.05);
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 0.5em 0.75em;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 3px rgba(13,110,253,0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .card-img-top {
+        height: 180px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Course Filter Functionality
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const courseCards = document.querySelectorAll('.course-card');
+
+    function filterCourses() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const category = categoryFilter.value;
+
+        courseCards.forEach(card => {
+            const courseText = card.textContent.toLowerCase();
+            const courseCategory = card.parentElement.dataset.category;
+
+            const matchesSearch = courseText.includes(searchTerm);
+            const matchesCategory = category === 'all' || courseCategory === category;
+
+            card.parentElement.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
+        });
+    }
+
+    searchInput.addEventListener('input', filterCourses);
+    categoryFilter.addEventListener('change', filterCourses);
+
+    // Add hover class for animation
+    document.querySelectorAll('.course-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+        });
+    });
+});
+</script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</script>
+
+</body>
+</html>
