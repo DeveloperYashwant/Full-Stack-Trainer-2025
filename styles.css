@@ -1,7 +1,7 @@
     /* Custom Gradient Background */
     .navbar {
         margin-top:auto;
-        background: linear-gradient(45deg, Yellow);
+        background: linear-gradient(45deg, #ff043,#f00ff78);
         background-size: 20% 20%;
         animation: gradientBG 10s ease infinite;
         border-radius: 0px 45px 0px 45px;
