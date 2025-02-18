@@ -558,6 +558,7 @@ footer {
             cursor: pointer;
             font-size: 18px;
             transition: transform 0.3s ease-in-out;
+            Opacity:0.6
         }
 
         /* Hover effect */
