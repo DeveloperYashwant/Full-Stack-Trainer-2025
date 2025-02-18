@@ -147,14 +147,23 @@
         }
 
         /* Original Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius:60px;
-           
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px; /* Reduced from 60px */
+    overflow: hidden; /* Prevents content from spilling over rounded corners */
+    min-height: 100vh; /* Ensures radius is visible on short pages */
+}
+
+        /* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        border-radius: 10px; /* Smaller radius for mobile */
+    }
+        
+
         .c1 {
             color: #4a148c;
             font-weight: bold;
