@@ -115,6 +115,12 @@
             event.preventDefault();
             showAlert("Right-click is disabled!");
         });
+
+        // Ask for confirmation before leaving the page
+        window.onbeforeunload = function () {
+            return "Are you sure you want to leave?";
+        };
+
     </script>
     
 </head>
