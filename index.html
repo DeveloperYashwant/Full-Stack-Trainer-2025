@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,158 +12,77 @@
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-<!-- AOS Animation -->
+<!-- AOS -->
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-<!-- 3D Tilt -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 
 <style>
 
-/* GLOBAL */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    scroll-behavior: smooth;
-}
+/* GENERAL */
+body { scroll-behavior: smooth; }
 
 /* NAVBAR */
-.navbar {
-    transition: 0.3s;
-    padding: 15px;
-    background: transparent;
-}
-.navbar.scrolled {
-    background: rgba(0,0,0,0.85);
-}
-.navbar-brand, .nav-link {
-    color: white !important;
-}
-.nav-link::after {
-    content:'';
-    width:0;
-    height:2px;
-    background:#00c6ff;
-    position:absolute;
-    bottom:-5px;
-    left:0;
-    transition:0.3s;
-}
-.nav-link:hover::after {
-    width:100%;
-}
+.navbar { transition: 0.3s; }
+.navbar.scrolled { background: #000 !important; }
 
 /* HERO */
 .hero {
-    min-height: 100vh;
+    height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
-    position: relative;
     color:white;
+    position:relative;
 }
 .hero::before {
     content:"";
     position:absolute;
     width:100%;
     height:100%;
-    background: rgba(0,0,0,0.6);
+    background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover;
 }
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
+.hero-content { position:relative; z-index:2; }
 
 /* BUTTON */
 .btn-custom {
     background: linear-gradient(45deg,#00c6ff,#0072ff);
     color:white;
     border-radius:30px;
-    padding:10px 25px;
-    transition:0.3s;
-}
-.btn-custom:hover {
-    transform: scale(1.1);
 }
 
-/* SOCIAL ICONS */
-.social-icons i {
-    margin:10px;
-    font-size:20px;
-    cursor:pointer;
-    transition:0.3s;
+/* FLOAT BUTTONS */
+.call-btn, .whatsapp-btn {
+    position:fixed;
+    right:20px;
+    padding:15px;
+    border-radius:50%;
+    color:white;
+    z-index:999;
 }
-.social-icons i:hover {
-    color:#00c6ff;
-    transform: scale(1.2);
-}
+.call-btn { bottom:20px; background:#00c6ff; }
+.whatsapp-btn { bottom:80px; background:#25D366; }
 
-/* SECTIONS */
-section {
-    padding:100px 20px;
-    text-align:center;
+/* POPUP */
+.popup {
+    display:none;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
 }
-
-/* ROADMAP */
-.timeline {
-    max-width:800px;
-    margin:auto;
-}
-.content {
-    background: rgba(255,255,255,0.9);
-    padding:20px;
-    margin:15px;
-    border-radius:15px;
-    transition:0.3s;
-}
-.content:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-/* DOWNLOAD */
-.download-box {
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(10px);
+.popup-box {
+    background:white;
     padding:30px;
-    border-radius:15px;
+    border-radius:10px;
 }
 
-/* CONTACT */
-.contact i {
-    font-size:24px;
-    margin:10px;
-    transition:0.3s;
-}
-.contact i:hover {
-    transform: scale(1.2);
-    color:#00c6ff;
-}
-
-/* CALL BUTTON */
-.call-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #00c6ff;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 20px;
-    z-index: 999;
-    animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.hero { text-align:center; }
-}
+/* CARD HOVER */
+.card:hover { transform:translateY(-10px); transition:0.3s; }
 
 </style>
 </head>
@@ -170,117 +90,93 @@ section {
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 <div class="container">
+<a class="navbar-brand"><i class="fa fa-code text-info"></i> DotNetPro</a>
 
-<a class="navbar-brand"><i class="fa fa-code"></i> DotNetPro</a>
-
-<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
 <span class="navbar-toggler-icon"></span>
 </button>
 
 <div class="collapse navbar-collapse" id="menu">
 <ul class="navbar-nav ms-auto">
-<li><a class="nav-link" href="#home">Home</a></li>
-<li><a class="nav-link" href="#about">About</a></li>
-<li><a class="nav-link" href="#roadmap">Roadmap</a></li>
-<li><a class="nav-link" href="#download">Download</a></li>
-<li><a class="nav-link" href="#contact">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="#home"><i class="fa fa-home"></i> Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about"><i class="fa fa-user"></i> About</a></li>
+<li class="nav-item"><a class="nav-link" href="#roadmap"><i class="fa fa-map"></i> Roadmap</a></li>
+<li class="nav-item"><a class="nav-link" href="#download"><i class="fa fa-download"></i> Download</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact"><i class="fa fa-phone"></i> Contact</a></li>
 </ul>
 </div>
-
 </div>
 </nav>
 
 <!-- HERO -->
 <section id="home" class="hero">
 <div class="hero-content" data-aos="fade-up">
-
 <h1>Become a Job-Ready .NET Developer</h1>
-<p>100% Practical Training + Real Projects + Placement Support</p>
-
-<a href="tel:7350059415" class="btn btn-custom mt-3">Call Now</a>
-
-<div class="social-icons mt-3">
-<i class="fab fa-facebook"></i>
-<i class="fab fa-linkedin"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-github"></i>
-</div>
-
+<p>Practical Training + Real Projects + Placement Support</p>
+<a href="#" onclick="showNumber()" class="btn btn-custom mt-3 px-4 py-2">Call Now</a>
 </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" data-aos="fade-up">
-<h2>About Us</h2>
-<p>Professional .NET Full Stack training with real-time experience.</p>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="bg-light">
-<h2>Why Choose Us?</h2>
+<section id="about" class="py-5 bg-light text-center">
+<div class="container">
+<h2 data-aos="fade-up">About Us</h2>
 
 <div class="row mt-4">
-
-<div class="col-md-4">
+<div class="col-md-4" data-aos="zoom-in">
+<div class="card p-3 shadow">
 <i class="fa fa-laptop-code fa-2x text-primary"></i>
-<h5>Real Projects</h5>
-<p>Work on live industry projects</p>
+<h5>Practical Training</h5>
+</div>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-4" data-aos="zoom-in">
+<div class="card p-3 shadow">
 <i class="fa fa-user-graduate fa-2x text-primary"></i>
-<h5>Expert Trainers</h5>
-<p>Learn from professionals</p>
+<h5>Expert Guidance</h5>
+</div>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-4" data-aos="zoom-in">
+<div class="card p-3 shadow">
 <i class="fa fa-briefcase fa-2x text-primary"></i>
 <h5>Placement Support</h5>
-<p>Get job-ready training</p>
 </div>
-
+</div>
+</div>
 </div>
 </section>
 
 <!-- ROADMAP -->
-<section id="roadmap" data-aos="zoom-in">
-<h2>Learning Roadmap</h2>
+<section id="roadmap" class="py-5 text-center">
+<div class="container">
+<h2 class="mb-5" data-aos="fade-up">Learning Roadmap</h2>
 
-<div class="timeline">
-
-<div class="content" data-tilt><h4>Step 1</h4><p>HTML, CSS, JavaScript</p></div>
-<div class="content" data-tilt><h4>Step 2</h4><p>C# Programming</p></div>
-<div class="content" data-tilt><h4>Step 3</h4><p>ASP.NET Core</p></div>
-<div class="content" data-tilt><h4>Step 4</h4><p>SQL Server</p></div>
-<div class="content" data-tilt><h4>Step 5</h4><p>Azure Deployment</p></div>
+<div class="row g-4">
+<div class="col-md-4" data-aos="fade-up"><div class="card p-3 shadow">HTML, CSS, JS</div></div>
+<div class="col-md-4" data-aos="fade-up"><div class="card p-3 shadow">C#</div></div>
+<div class="col-md-4" data-aos="fade-up"><div class="card p-3 shadow">ASP.NET Core</div></div>
+<div class="col-md-4" data-aos="fade-up"><div class="card p-3 shadow">SQL Server</div></div>
+<div class="col-md-4" data-aos="fade-up"><div class="card p-3 shadow">Azure</div></div>
+</div>
 
 </div>
 </section>
 
 <!-- DOWNLOAD -->
-<section id="download" data-aos="fade-right">
-<h2>Download Software</h2>
-
-<div class="download-box">
-<a href="https://visualstudio.microsoft.com/" class="btn btn-custom m-2"><i class="fa fa-download"></i> Visual Studio</a>
-<a href="https://dotnet.microsoft.com/download" class="btn btn-custom m-2"><i class="fa fa-download"></i> .NET SDK</a>
-</div>
+<section id="download" class="py-5 bg-light text-center" data-aos="fade-right">
+<h2>Download</h2>
+<a href="https://visualstudio.microsoft.com/" class="btn btn-primary m-2">Visual Studio</a>
+<a href="https://dotnet.microsoft.com/download" class="btn btn-success m-2">.NET SDK</a>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact" data-aos="fade-left">
+<section id="contact" class="py-5 text-center" data-aos="fade-left">
 <h2>Contact</h2>
 <p>Email: yashghole12@gmail.com</p>
 <p>Phone: 7350059415</p>
-
-<div>
-<i class="fab fa-facebook"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-linkedin"></i>
-<i class="fab fa-whatsapp"></i>
-</div>
 </section>
 
 <!-- FOOTER -->
@@ -288,23 +184,65 @@ section {
 © 2026 DotNetPro
 </footer>
 
-<!-- CALL BUTTON -->
-<a href="tel:7350059415" class="call-btn">
+<!-- FLOAT BUTTONS -->
+<a href="#" class="call-btn" onclick="showNumber()">
 <i class="fa fa-phone"></i>
 </a>
 
-<!-- SCRIPTS -->
+<a href="https://wa.me/917350059415?text=Hello%20I%20want%20.NET%20training" target="_blank" class="whatsapp-btn">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- POPUP -->
+<div id="callPopup" class="popup">
+<div class="popup-box text-center">
+<h4>Call Us</h4>
+<p>7350059415</p>
+<a href="tel:7350059415" class="btn btn-success">Call Now</a><br><br>
+<button onclick="closePopup()" class="btn btn-danger">Close</button>
+</div>
+</div>
+
+<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
 <script>
-AOS.init({ duration:1000 });
+document.addEventListener("DOMContentLoaded", function(){
+
+AOS.init({ duration:1000, once:true });
+
+window.showNumber = function(){
+document.getElementById("callPopup").style.display="flex";
+};
+
+window.closePopup = function(){
+document.getElementById("callPopup").style.display="none";
+};
+
+window.onclick = function(e){
+let popup = document.getElementById("callPopup");
+if(e.target === popup){
+popup.style.display = "none";
+}
+};
 
 window.addEventListener("scroll", function(){
 document.querySelector(".navbar")
 .classList.toggle("scrolled", window.scrollY > 50);
 });
+
+document.querySelectorAll('a.nav-link').forEach(link => {
+link.addEventListener('click', function(e){
+e.preventDefault();
+document.querySelector(this.getAttribute("href"))
+.scrollIntoView({ behavior:"smooth" });
+});
+});
+
+});
 </script>
 
 </body>
 </html>
+
