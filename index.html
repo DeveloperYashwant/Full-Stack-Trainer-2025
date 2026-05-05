@@ -10,77 +10,72 @@
 
 <style>
 
-/* GENERAL */
+/* BACKGROUND */
 body {
     font-family: 'Segoe UI', sans-serif;
-    scroll-behavior: smooth;
-}
-
-/* NAVBAR */
-.navbar {
-    background: #111;
+    background: linear-gradient(to right,#f8f9fa,#e9ecef);
 }
 
 /* HERO */
 .hero {
-    background: linear-gradient(135deg, #0d6efd, #6f42c1);
-    color: white;
-    padding: 100px 20px;
+    background: linear-gradient(135deg,#0d6efd,#6f42c1);
+    color:white;
+    padding:100px 20px;
 }
 
-.hero h1 {
-    font-size: 2.8rem;
+/* CARD ANIMATION */
+.software-card {
+    background:#fff;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.software-card:hover {
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 20px rgba(13,110,253,0.6);
 }
 
-/* CARDS */
-.card-custom {
-    border: none;
-    border-radius: 15px;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* ICON */
+.icon {
+    font-size:40px;
+    margin-bottom:10px;
 }
 
-.card-custom:hover {
-    transform: translateY(-8px);
-}
-
-/* REVIEWS */
+/* REVIEW */
 .review-card {
-    min-width: 280px;
-    background: #222;
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
+    min-width:250px;
+    background:#222;
+    color:white;
+    padding:20px;
+    border-radius:10px;
 }
 
 /* SCROLL */
 .reviews-container {
-    overflow-x: auto;
-    display: flex;
-    gap: 15px;
-    padding-bottom: 10px;
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
 }
 
-/* TRUST */
-.trust-box {
-    padding: 20px;
-}
-
-/* WHATSAPP BUTTON */
+/* WHATSAPP */
 .whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 50%;
-    font-size: 20px;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:12px 15px;
+    border-radius:50%;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-    .hero h1 { font-size: 2rem; }
+/* ABOUT */
+.about-box {
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 </style>
@@ -89,139 +84,158 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-dark bg-dark fixed-top">
 <div class="container">
-    <a class="navbar-brand fw-bold">Full Stack Trainer</a>
-
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto text-center">
-            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
-            <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-    </div>
+    <span class="navbar-brand">Full Stack Trainer</span>
 </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero text-center">
+<section class="hero text-center mt-5">
 <div class="container">
-    <h1 class="fw-bold mb-3">Learn from the Best 🌟</h1>
-    <p class="lead">Transform your career with expert-led courses</p>
-
-    <div class="mt-4">
-        <a href="#" class="btn btn-light me-2">🚀 Software</a>
-        <a href="#" class="btn btn-outline-light">💬 Get Started</a>
-    </div>
+    <h1>Learn from the Best 🌟</h1>
+    <p>Transform your career</p>
 </div>
 </section>
 
-<!-- COURSES -->
-<section id="courses" class="py-5">
+<!-- SOFTWARE -->
+<section class="py-5">
 <div class="container">
-    <h2 class="text-center mb-5">Our Courses</h2>
 
-    <div class="row g-4">
+<h2 class="text-center mb-4">💻 Software Downloads</h2>
 
-        <div class="col-md-3 col-sm-6">
-            <div class="card card-custom p-3 text-center">
-                <h5>Frontend</h5>
-                <p>HTML, CSS, JavaScript</p>
-            </div>
-        </div>
+<input type="text" id="searchBox" class="form-control mb-4" placeholder="Search software...">
 
-        <div class="col-md-3 col-sm-6">
-            <div class="card card-custom p-3 text-center">
-                <h5>Java</h5>
-                <p>Core + Advanced</p>
-            </div>
-        </div>
+<div class="row g-4" id="softwareList">
 
-        <div class="col-md-3 col-sm-6">
-            <div class="card card-custom p-3 text-center">
-                <h5>Python</h5>
-                <p>Django + Automation</p>
-            </div>
-        </div>
+<!-- CARD -->
+<div class="col-md-3 software-item">
+<div class="software-card">
+<div class="icon">💻</div>
+<h5>VS Code</h5>
+<button class="btn btn-success" onclick="download(this,'vscode')">
+Download (<span>0</span>)
+</button>
+</div>
+</div>
 
-        <div class="col-md-3 col-sm-6">
-            <div class="card card-custom p-3 text-center">
-                <h5>SQL</h5>
-                <p>Database Mastery</p>
-            </div>
-        </div>
+<div class="col-md-3 software-item">
+<div class="software-card">
+<div class="icon">☕</div>
+<h5>Eclipse</h5>
+<button class="btn btn-success" onclick="download(this,'eclipse')">
+Download (<span>0</span>)
+</button>
+</div>
+</div>
 
-    </div>
+<div class="col-md-3 software-item">
+<div class="software-card">
+<div class="icon">🗄️</div>
+<h5>Workbench</h5>
+<button class="btn btn-success" onclick="download(this,'workbench')">
+Download (<span>0</span>)
+</button>
+</div>
+</div>
+
+<div class="col-md-3 software-item">
+<div class="software-card">
+<div class="icon">📝</div>
+<h5>Notepad++</h5>
+<button class="btn btn-success" onclick="download(this,'notepad')">
+Download (<span>0</span>)
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- JOB PLACEMENT -->
+<section class="bg-dark text-light py-5 text-center">
+<div class="container">
+<h2 class="text-warning">💼 Job Placement</h2>
+
+<div class="row g-4 mt-3">
+<div class="col-md-4"><div class="card p-3">Rahul – ₹6 LPA</div></div>
+<div class="col-md-4"><div class="card p-3">Priya – ₹5 LPA</div></div>
+<div class="col-md-4"><div class="card p-3">Arjun – ₹7 LPA</div></div>
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-5 text-center">
+<div class="container">
+<div class="about-box">
+<h3>About Us</h3>
+<p>We train students in Full Stack, Java, Python & SQL with real projects.</p>
+</div>
 </div>
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" class="bg-dark py-5">
+<section class="bg-dark py-5">
 <div class="container">
-    <h2 class="text-center text-warning mb-4">Student Reviews</h2>
+<h3 class="text-warning text-center">Reviews</h3>
 
-    <div class="reviews-container">
-        <div class="review-card">⭐⭐⭐⭐⭐<br>Best training ever!</div>
-        <div class="review-card">⭐⭐⭐⭐⭐<br>Got job after course</div>
-        <div class="review-card">⭐⭐⭐⭐⭐<br>Excellent teaching</div>
-        <div class="review-card">⭐⭐⭐⭐⭐<br>Very practical</div>
-    </div>
+<div class="reviews-container mt-3">
+<div class="review-card">⭐⭐⭐⭐⭐ Best training</div>
+<div class="review-card">⭐⭐⭐⭐⭐ Got job</div>
+<div class="review-card">⭐⭐⭐⭐⭐ Very practical</div>
 </div>
-</section>
 
-<!-- TRUST -->
-<section class="py-5 text-center">
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-4 trust-box">
-            <h4>500+ Students</h4>
-        </div>
-
-        <div class="col-md-4 trust-box">
-            <h4>4.9 Rating</h4>
-        </div>
-
-        <div class="col-md-4 trust-box">
-            <h4>85% Career Growth</h4>
-        </div>
-
-    </div>
 </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-5 bg-light text-center">
+<section class="py-5 text-center">
 <div class="container">
-    <h2>Contact</h2>
-    <p><strong>Dr. Krish:</strong> 7208921898</p>
-    <p><strong>Yashwant Sir:</strong> 7350059415</p>
+<h3>Contact</h3>
+<p>📞 7350059415</p>
 </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="bg-dark text-white text-center py-3">
-    © 2025 Yashwant Software Solutions
+© 2025 Yashwant Software Solutions
 </footer>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/7350059415" class="whatsapp">💬</a>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<a href="#" class="whatsapp">💬</a>
 
 <script>
-// Smooth active nav effect
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(){
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
+
+/* DOWNLOAD COUNTER WITH LOCAL STORAGE */
+function download(btn, name){
+    let count = localStorage.getItem(name) || 0;
+    count++;
+    localStorage.setItem(name, count);
+    btn.querySelector("span").innerText = count;
+}
+
+/* LOAD COUNTS */
+window.onload = () => {
+    document.querySelectorAll(".software-item").forEach(item=>{
+        let name = item.innerText.toLowerCase();
+        let key = name.includes("vs") ? "vscode" :
+                  name.includes("eclipse") ? "eclipse" :
+                  name.includes("workbench") ? "workbench" : "notepad";
+        let count = localStorage.getItem(key) || 0;
+        item.querySelector("span").innerText = count;
+    });
+};
+
+/* SEARCH */
+document.getElementById("searchBox").addEventListener("keyup", function(){
+    let value = this.value.toLowerCase();
+    document.querySelectorAll(".software-item").forEach(item=>{
+        item.style.display = item.innerText.toLowerCase().includes(value) ? "block" : "none";
     });
 });
+
 </script>
 
 </body>
