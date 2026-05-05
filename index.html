@@ -3,47 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Full Stack Trainer</title>
+<title>Yashwant Software Solutions</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
-/* GENERAL */
-body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
-
-/* NAVBAR */
-.navbar { background: black; }
+body { padding-top:70px; font-family:Segoe UI; scroll-behavior:smooth; }
 
 /* HERO */
-.hero-slide {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') center/cover no-repeat;
-    color: white;
+.hero {
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') center/cover;
+    color:white;
+    padding:120px 20px;
+    position:relative;
 }
-
-.hero-content {
-    background: rgba(0,0,0,0.5);
-    padding: 30px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
+.hero::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.6);
 }
+.hero-content { position:relative; z-index:2; }
 
 .glow-text {
-    color: #ff2e63;
-    text-shadow: 0 0 10px #ff2e63;
+    color:#ff2e63;
+    text-shadow:0 0 10px #ff2e63;
 }
 
+/* NAVBAR ICON */
+.nav-link i { margin-right:5px; }
+
 /* CARDS */
-.card-custom {
-    border-radius: 15px;
-    transition: 0.3s;
+.card {
+    border-radius:15px;
+    transition:0.3s;
 }
-.card-custom:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 0 20px #0dcaf0;
+.card:hover {
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 20px #0dcaf0;
 }
 
 /* SOFTWARE */
@@ -69,7 +68,6 @@ body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
 .review-card {
     min-width:250px;
     background:#222;
-    color:white;
     padding:20px;
     border-radius:10px;
 }
@@ -83,8 +81,8 @@ body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
 
 /* BUTTON */
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px cyan;
+    transform:scale(1.05);
+    box-shadow:0 0 10px cyan;
 }
 
 </style>
@@ -93,68 +91,56 @@ body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 <div class="container">
-    <a class="navbar-brand">Yash</a>
+<a class="navbar-brand fw-bold">Yash</a>
 
-    <div class="ms-auto">
-        <a href="#home" class="text-info mx-2"><i class="fas fa-home"></i></a>
-        <a href="#software" class="text-success mx-2"><i class="fas fa-download"></i></a>
-        <a href="#placement" class="text-warning mx-2"><i class="fas fa-briefcase"></i></a>
-        <a href="#contact" class="text-danger mx-2"><i class="fas fa-phone"></i></a>
-    </div>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i>Home</a></li>
+<li class="nav-item"><a href="#software" class="nav-link"><i class="fas fa-download"></i>Software</a></li>
+<li class="nav-item"><a href="#placement" class="nav-link"><i class="fas fa-briefcase"></i>Placement</a></li>
+<li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone"></i>Contact</a></li>
+</ul>
+</div>
 </div>
 </nav>
 
-<!-- HERO SLIDER -->
-<div id="slider" class="carousel slide" data-bs-ride="carousel">
-
-<div class="carousel-inner">
-
-<div class="carousel-item active">
-<div class="hero-slide d-flex justify-content-center align-items-center text-center">
-<div class="hero-content">
-<h1 class="glow-text">From Confusion to Confidence</h1>
-<p>Every expert was once a beginner</p>
-<button class="btn btn-info">Join Now</button>
+<!-- HERO -->
+<section class="hero text-center">
+<div class="container hero-content">
+<h1 class="fw-bold glow-text">From Confusion to Confidence</h1>
+<p class="lead">Every expert was once a beginner</p>
+<a href="#software" class="btn btn-info">Explore Software</a>
 </div>
-</div>
-</div>
-
-<div class="carousel-item">
-<div class="hero-slide d-flex justify-content-center align-items-center text-center">
-<div class="hero-content">
-<h1 class="glow-text">Become Full Stack Developer 🚀</h1>
-<p>Learn with real projects</p>
-<button class="btn btn-warning">Start Now</button>
-</div>
-</div>
-</div>
-
-</div>
-</div>
+</section>
 
 <!-- COUNTERS -->
 <section class="text-center py-5">
 <div class="container">
 <div class="row">
+<div class="col-md-4"><div class="counter" id="students">0</div><p>Students</p></div>
+<div class="col-md-4"><div class="counter" id="rating">0</div><p>Rating</p></div>
+<div class="col-md-4"><div class="counter" id="placements">0</div><p>Placements</p></div>
+</div>
+</div>
+</section>
 
-<div class="col-md-4">
-<div class="counter" id="students">0</div>
-<p>Students</p>
+<!-- COURSES -->
+<section class="py-5">
+<div class="container">
+<h2 class="text-center mb-4">Courses</h2>
+
+<div class="row g-4">
+<div class="col-md-4"><div class="card p-3 text-center"><i class="fab fa-html5 fa-2x"></i><h5>Frontend</h5></div></div>
+<div class="col-md-4"><div class="card p-3 text-center"><i class="fab fa-java fa-2x"></i><h5>Backend</h5></div></div>
+<div class="col-md-4"><div class="card p-3 text-center"><i class="fas fa-cloud fa-2x"></i><h5>Cloud</h5></div></div>
 </div>
 
-<div class="col-md-4">
-<div class="counter" id="rating">0</div>
-<p>Rating</p>
-</div>
-
-<div class="col-md-4">
-<div class="counter" id="placementCount">0</div>
-<p>Placements</p>
-</div>
-
-</div>
 </div>
 </section>
 
@@ -163,7 +149,6 @@ body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
 <div class="container">
 
 <h2 class="text-center mb-4">Software</h2>
-
 <input type="text" id="search" class="form-control mb-4" placeholder="Search software...">
 
 <div class="row g-4" id="softwareContainer"></div>
@@ -174,63 +159,62 @@ body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
 <!-- PLACEMENT -->
 <section id="placement" class="py-5 bg-dark text-light text-center">
 <div class="container">
-<h2>💼 Placements</h2>
-
-<div class="row mt-4">
+<h2>💼 Placement</h2>
+<div class="row mt-3">
 <div class="col-md-4"><div class="card p-3">Rahul ₹6LPA</div></div>
 <div class="col-md-4"><div class="card p-3">Priya ₹5LPA</div></div>
 <div class="col-md-4"><div class="card p-3">Arjun ₹7LPA</div></div>
 </div>
-
 </div>
 </section>
 
 <!-- REVIEWS -->
-<section class="py-5">
+<section class="bg-dark text-light py-5">
 <div class="container">
-<h3 class="text-center">Reviews</h3>
-
+<h2 class="text-center">Reviews</h2>
 <div class="reviews-container mt-3">
-<div class="review-card">⭐⭐⭐⭐⭐ Best training</div>
-<div class="review-card">⭐⭐⭐⭐⭐ Got job</div>
-<div class="review-card">⭐⭐⭐⭐⭐ Excellent</div>
+<div class="review-card">⭐⭐⭐⭐⭐ Great teaching</div>
+<div class="review-card">⭐⭐⭐⭐⭐ Very helpful</div>
+<div class="review-card">⭐⭐⭐⭐⭐ Best trainer</div>
 </div>
-
 </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-5 text-center">
 <div class="container">
-<h3>Contact</h3>
-<p>📞 7350059415</p>
+<h2>Contact</h2>
+<p>📞 7208921898</p>
 </div>
 </section>
+
+<footer class="bg-dark text-white text-center py-3">
+© 2025 Yashwant Software Solutions
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
-/* SOFTWARE DATA */
-const data = [
-{name:"VS Code", icon:"💻", key:"vscode", link:"https://code.visualstudio.com/"},
-{name:"Eclipse", icon:"☕", key:"eclipse", link:"https://www.eclipse.org/downloads/"},
-{name:"Workbench", icon:"🗄️", key:"workbench", link:"https://dev.mysql.com/downloads/workbench/"},
-{name:"Notepad++", icon:"📝", key:"notepad", link:"https://notepad-plus-plus.org/downloads/"}
+/* DATA */
+const software = [
+{name:"VS Code",key:"vscode",link:"https://code.visualstudio.com/"},
+{name:"Eclipse",key:"eclipse",link:"https://www.eclipse.org/downloads/"},
+{name:"Workbench",key:"workbench",link:"https://dev.mysql.com/downloads/workbench/"},
+{name:"Notepad++",key:"notepad",link:"https://notepad-plus-plus.org/downloads/"}
 ];
 
 /* RENDER */
 function render(list){
 let html="";
-list.forEach(item=>{
-let count = localStorage.getItem(item.key)||0;
+list.forEach(s=>{
+let c=localStorage.getItem(s.key)||0;
 html+=`
 <div class="col-md-3">
 <div class="software-card">
-<div style="font-size:40px">${item.icon}</div>
-<h5>${item.name}</h5>
-<a href="${item.link}" target="_blank" onclick="download('${item.key}')" class="btn btn-success">
-Download (${count})
+<h5>${s.name}</h5>
+<a href="${s.link}" target="_blank" onclick="download('${s.key}')" class="btn btn-success">
+Download (${c})
 </a>
 </div>
 </div>`;
@@ -239,32 +223,32 @@ document.getElementById("softwareContainer").innerHTML=html;
 }
 
 /* DOWNLOAD */
-function download(key){
-let c = localStorage.getItem(key)||0;
-localStorage.setItem(key, ++c);
+function download(k){
+let c=localStorage.getItem(k)||0;
+localStorage.setItem(k,++c);
 }
 
 /* SEARCH */
 document.getElementById("search").addEventListener("keyup",function(){
 let v=this.value.toLowerCase();
-render(data.filter(d=>d.name.toLowerCase().includes(v)));
+render(software.filter(s=>s.name.toLowerCase().includes(v)));
 });
 
-/* COUNTER ANIMATION */
-function animate(id, target){
+/* COUNTER */
+function animate(id,target){
 let i=0;
-let interval=setInterval(()=>{
+let int=setInterval(()=>{
 i+=Math.ceil(target/50);
-if(i>=target){ i=target; clearInterval(interval); }
+if(i>=target){i=target;clearInterval(int);}
 document.getElementById(id).innerText=i;
 },30);
 }
 
 /* INIT */
-render(data);
+render(software);
 animate("students",500);
 animate("rating",5);
-animate("placementCount",120);
+animate("placements",120);
 
 </script>
 
