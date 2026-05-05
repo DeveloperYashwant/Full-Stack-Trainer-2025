@@ -1,397 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags for character set and responsive design -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Title of the webpage -->
-    <title>Yashwant Software Solutions</title>
-    
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS for additional styling -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Icon Set -->
-        <link rel="icon" href="spring.png">
+<title>Yashwant Software Solutions</title>
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-        /* Alert Box Styling */
-        .custom-alert {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            z-index: 1000;
-            display: none;
-            width: 300px;
-            font-family: Arial, sans-serif;
-        }
 
-        /* Alert Background */
-        .custom-alert-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 999;
-        }
+/* GENERAL */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
 
-        /* Alert Text */
-        .custom-alert-message {
-            font-size: 18px;
-            font-weight: bold;
-            color: red; /* Change text color */
-            margin-bottom: 15px;
-        }
+/* NAVBAR */
+.navbar {
+    background: #111;
+}
 
-        /* OK Button */
-        .custom-alert-button {
-            padding: 10px 20px;
-            border: none;
-            background: #3498db;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #0d6efd, #6f42c1);
+    color: white;
+    padding: 100px 20px;
+}
 
-        .custom-alert-button:hover {
-            background: #2980b9;
-        }
-    </style>
+.hero h1 {
+    font-size: 2.8rem;
+}
+
+/* CARDS */
+.card-custom {
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-custom:hover {
+    transform: translateY(-8px);
+}
+
+/* REVIEWS */
+.review-card {
+    min-width: 280px;
+    background: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* SCROLL */
+.reviews-container {
+    overflow-x: auto;
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+/* TRUST */
+.trust-box {
+    padding: 20px;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero h1 { font-size: 2rem; }
+}
+
+</style>
 </head>
+
 <body>
 
-    
-    <script>
-        function showAlert(message) {
-            document.getElementById("alertMessage").innerHTML = message;
-            document.getElementById("alertBox").style.display = "block";
-            document.getElementById("alertOverlay").style.display = "block";
-        }
-
-        function closeAlert() {
-            document.getElementById("alertBox").style.display = "none";
-            document.getElementById("alertOverlay").style.display = "none";
-        }
-
-        // Disable certain keys with custom alert
-        document.addEventListener("keydown", function(event) {
-            if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
-                event.preventDefault();
-                showAlert("Action not allowed!");
-            }
-            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
-                event.preventDefault();
-                showAlert("Developer Tools are disabled!");
-            }
-        });
-
-        // Disable right-click with custom alert
-        document.addEventListener("contextmenu", function(event) {
-            event.preventDefault();
-            showAlert("Right-click is disabled!");
-        });
-
-   
-    </script>
-    
-</head>
-<body>
-<!-- Enhanced Navigation Bar -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="assets/images/logo1.jpg" alt="E-Learn Logo" class="logo-img" style="height: 40px;">
-            <span class="logo-text ms-2 fw-bold">Full Stack Trainer</span>
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="btn btn-outline-dark mx-2 nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-dark mx-2 nav-link" href="about.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-dark mx-2 nav-link" href="#courses">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-dark mx-2 nav-link" href="#contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Enhanced Hero Section -->
-<header class="hero">
-    <div class="container text-center">
-        <h1 class="display-4 fw-bold mb-4 animate-fadeInUp">
-        <p class="lead mb-5 animate-fadeInUp animation-delay-200">
-             <h2>Learn from the Best</h2> 🌟
-<br><br>
-            <h2>Transform your career with our expert-led courses!</h2>
-        </p>
-        
-        <div class="d-flex justify-content-center gap-3 animate-fadeInUp animation-delay-400">
-            <a href="software.html" class="btn btn-light btn-lg px-5 py-3 hover-scale">
-                🚀 Software
-            </a>
-            <a href="topic_list.html" class="btn btn-outline-light btn-lg px-5 py-3 hover-scale">
-                💬 Get Started
-            </a>
-        </div>
-    </div>
-</header>
-
-<!-- Course Listing with Search & Filter -->
-
 <div class="container">
-        <div class="header">
-            <h1>Full Stack Trainer</h1>
-            <p>Master in-demand technologies with industry experts</p>
-        </div>
+    <a class="navbar-brand fw-bold">Full Stack Trainer</a>
 
-        <div class="search-filter">
-            <input type="text" 
-                   class="search-input" 
-                   placeholder="Search courses..."
-                   id="searchInput">
-            <select class="filter-select" id="categoryFilter">
-                <option value="all">All Categories</option>
-                <option value="frontend">Frontend</option>
-                <option value="backend">Backend</option>
-                <option value="cloud">Cloud</option>
-                <option value="mobile">Mobile</option>
-            </select>
-        </div>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="courses-grid" id="coursesGrid">
-            <!-- Courses will be dynamically loaded here -->
-        </div>
-    </div>
-
-
-<!-- Happy Students Reviews Section -->
-<section class="tech-reviews py-5 bg-dark text-light">
-    <div class="container">
-        <h2 class="text-center mb-4 display-4 fw-bold text-warning">Tech-Specific Success Stories</h2>
-        <p class="lead text-center mb-5">200+ developers trained in specialized technologies by <strong>Yashwant Sir</strong></p>
-
-        <div class="position-relative">
-            <button class="scroll-arrow left-arrow" aria-label="Previous reviews">❮</button>
-            
-            <div class="reviews-container d-flex flex-nowrap overflow-auto scroll-snap py-3">
-                <!-- Web Design -->
-                <div class="review-card flex-shrink-0 scroll-snap-align mx-2">
-                    <div class="teaching-badge"><i class="fab fa-html5"></i> Web Design Pro</div>
-                    <h5>Ananya Patel</h5>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"From basic HTML to responsive CSS grids and JavaScript animations - <strong>Yashwant Sir</strong>'s front-end mastery helped me land 3 freelance clients!"</p>
-                    <div class="language-tags">
-                        <span class="badge bg-html">HTML5</span>
-                        <span class="badge bg-css">CSS3</span>
-                        <span class="badge bg-js">JavaScript</span>
-                    </div>
-                </div>
-
-                <!-- Core Java -->
-                <div class="review-card flex-shrink-0 scroll-snap-align mx-2">
-                    <div class="teaching-badge"><i class="fab fa-java"></i> Java Foundation</div>
-                    <h5>Rohan Patel</h5>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"Mastered OOP concepts, collections framework, and exception handling. Thanks to <strong>Yashwant Sir</strong>, I am now building enterprise applications with 80% fewer bugs!"</p>
-                    <div class="language-tags">
-                        <span class="badge bg-java">Java 17</span>
-                        <span class="badge bg-oop">OOP</span>
-                    </div>
-                </div>
-
-                <!-- Advanced Java -->
-                <div class="review-card flex-shrink-0 scroll-snap-align mx-2">
-                    <div class="teaching-badge"><i class="fas fa-server"></i> J2EE Expert</div>
-                    <h5>Vikram Joshi</h5>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"<strong>Yashwant Sir</strong>'s JSP/Servlet deep dive with Spring Security helped me optimize our banking app's transaction processing by 65%."</p>
-                    <div class="language-tags">
-                        <span class="badge bg-spring">Spring Boot</span>
-                        <span class="badge bg-hibernate">Hibernate</span>
-                    </div>
-                </div>
-
-                <!-- C# .NET -->
-                <div class="review-card flex-shrink-0 scroll-snap-align mx-2">
-                    <div class="teaching-badge"><i class="fab fa-microsoft"></i> .NET Specialist</div>
-                    <h5>Raj Verma</h5>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"Transitioned from Java to C# in just 3 weeks! With <strong>Yashwant Sir</strong>'s training, I built a hospital management system using ASP.NET Core and Entity Framework."</p>
-                    <div class="language-tags">
-                        <span class="badge bg-csharp">C#</span>
-                        <span class="badge bg-dotnet">.NET 6</span>
-                    </div>
-                </div>
-
-                <!-- SQL -->
-                <div class="review-card flex-shrink-0 scroll-snap-align mx-2">
-                    <div class="teaching-badge"><i class="fas fa-database"></i> SQL Master</div>
-                    <h5>Neha Reddy</h5>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"<strong>Yashwant Sir</strong> helped me optimize complex queries, reducing execution time from 12s to just 0.8s! Mastered window functions and query optimization techniques."</p>
-                    <div class="language-tags">
-                        <span class="badge bg-sql">SQL</span>
-                        <span class="badge bg-mssql">MS SQL</span>
-                    </div>
-                </div>
-
-                <!-- Python -->
-                <div class="review-card flex-shrink-0 scroll-snap-align mx-2">
-                    <div class="teaching-badge"><i class="fab fa-python"></i> Python Automation</div>
-                    <h5>Priya Rao</h5>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"Thanks to <strong>Yashwant Sir</strong>, I mastered Python . Now leading our company's data migration project using Django!"</p>
-                    <div class="language-tags">
-                        <span class="badge bg-python">Python 3.11</span>
-                        <span class="badge bg-django">Django</span>
-                    </div>
-                </div>
-            </div>
-
-            <button class="scroll-arrow right-arrow" aria-label="Next reviews">❯</button>
-        </div>
-    </div>
-</section>
-
-<!-- Trust Badges -->
-<div class="row mt-5 text-center">
-    <div class="col-md-4 trust-factor">
-        <i class="fas fa-user-friends fa-3x text-primary"></i>
-        <h4 class="mt-2">500+ Successful Students Trained by <strong>Yashwant Sir</strong></h4>
-    </div>
-    <div class="col-md-4 trust-factor">
-        <i class="fas fa-star fa-3x text-warning"></i>
-        <h4 class="mt-2">4.95/5 Average Rating for <strong>Yashwant Sir</strong>'s Training</h4>
-    </div>
-    <div class="col-md-4 trust-factor">
-        <i class="fas fa-briefcase fa-3x text-success"></i>
-        <h4 class="mt-2">85% Career Acceleration with <strong>Yashwant Sir</strong>'s Guidance</h4>
+    <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
     </div>
 </div>
+</nav>
 
+<!-- HERO -->
+<section class="hero text-center">
+<div class="container">
+    <h1 class="fw-bold mb-3">Learn from the Best 🌟</h1>
+    <p class="lead">Transform your career with expert-led courses</p>
 
-<!-- Contact Section -->
-<section id="contact" class="contact py-5 bg-light">
-    <div class="container text-center">
-        <h2 class="mb-4">Contact Us</h2>
-        <p><strong>Dr. Krish Kheloji:[Software Developer]</strong> +91 7208921898 </p>
-        <p><strong>Professor Yashwant Ghole:</strong> +91 7350059415</p>
+    <div class="mt-4">
+        <a href="#" class="btn btn-light me-2">🚀 Software</a>
+        <a href="#" class="btn btn-outline-light">💬 Get Started</a>
     </div>
+</div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-dark text-white py-4">
-    <div class="container text-center">
-        <strong><p>&copy; 2025 Yashwant Software Solutions. All rights reserved.</p></strong>
+<!-- COURSES -->
+<section id="courses" class="py-5">
+<div class="container">
+    <h2 class="text-center mb-5">Our Courses</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card card-custom p-3 text-center">
+                <h5>Frontend</h5>
+                <p>HTML, CSS, JavaScript</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card card-custom p-3 text-center">
+                <h5>Java</h5>
+                <p>Core + Advanced</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card card-custom p-3 text-center">
+                <h5>Python</h5>
+                <p>Django + Automation</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card card-custom p-3 text-center">
+                <h5>SQL</h5>
+                <p>Database Mastery</p>
+            </div>
+        </div>
+
     </div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="bg-dark py-5">
+<div class="container">
+    <h2 class="text-center text-warning mb-4">Student Reviews</h2>
+
+    <div class="reviews-container">
+        <div class="review-card">⭐⭐⭐⭐⭐<br>Best training ever!</div>
+        <div class="review-card">⭐⭐⭐⭐⭐<br>Got job after course</div>
+        <div class="review-card">⭐⭐⭐⭐⭐<br>Excellent teaching</div>
+        <div class="review-card">⭐⭐⭐⭐⭐<br>Very practical</div>
+    </div>
+</div>
+</section>
+
+<!-- TRUST -->
+<section class="py-5 text-center">
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 trust-box">
+            <h4>500+ Students</h4>
+        </div>
+
+        <div class="col-md-4 trust-box">
+            <h4>4.9 Rating</h4>
+        </div>
+
+        <div class="col-md-4 trust-box">
+            <h4>85% Career Growth</h4>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-light text-center">
+<div class="container">
+    <h2>Contact</h2>
+    <p><strong>Dr. Krish:</strong> 7208921898</p>
+    <p><strong>Yashwant Sir:</strong> 7350059415</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3">
+    © 2025 Yashwant Software Solutions
 </footer>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/7350059425" target="_blank" class="whatsapp-button">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/7350059415" class="whatsapp">💬</a>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JS -->
-<script src="scripts.js"></script>
-
 <script>
-
-// Enhanced scrolling with smooth behavior
-function scrollHorizontally(offset) {
-        const container = document.querySelector('.reviews-container');
-        container.scrollBy({
-            left: offset,
-            behavior: 'smooth'
-        });
-    }
-
-    // Add touch/swipe support
-    let touchStartX = 0;
-    const container = document.querySelector('.reviews-container');
-
-    container.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
+// Smooth active nav effect
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(){
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
     });
-
-    container.addEventListener('touchend', e => {
-        const touchEndX = e.changedTouches[0].clientX;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > 50) {
-            scrollHorizontally(diff > 0 ? -300 : 300);
-        }
-    });
-
-    // Arrow button controls
-    document.querySelectorAll('.scroll-arrow').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const offset = e.target.classList.contains('left-arrow') ? -300 : 300;
-            scrollHorizontally(offset);
-        });
-    });
-
-
-
-
-
-
-
- // Add click animation to nav links
- document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Remove active class from all links
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            
-            // Add active class to clicked link
-            this.classList.add('active');
-            
-            // Add motivational emoji animation
-            const emoji = document.createElement('span');
-            emoji.innerHTML = ['🎉', '✨', '🚀', '💡'][Math.floor(Math.random()*4)];
-            emoji.style.position = 'absolute';
-            emoji.style.left = `${e.pageX}px`;
-            emoji.style.top = `${e.pageY}px`;
-            emoji.style.animation = 'floatUp 1s ease-out';
-            document.body.appendChild(emoji);
-            
-            setTimeout(() => emoji.remove(), 1000);
-        });
-    });
-
+});
 </script>
+
 </body>
 </html>
