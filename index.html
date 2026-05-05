@@ -4,43 +4,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Yashwant Software Solutions</title>
+<title>Full Stack Trainer</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
-/* BACKGROUND */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right,#f8f9fa,#e9ecef);
-}
+/* GENERAL */
+body { font-family: 'Segoe UI'; scroll-behavior: smooth; }
+
+/* NAVBAR */
+.navbar { background: black; }
 
 /* HERO */
-.hero {
-    background: linear-gradient(135deg,#0d6efd,#6f42c1);
-    color:white;
-    padding:100px 20px;
+.hero-slide {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') center/cover no-repeat;
+    color: white;
 }
 
-/* CARD ANIMATION */
+.hero-content {
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.glow-text {
+    color: #ff2e63;
+    text-shadow: 0 0 10px #ff2e63;
+}
+
+/* CARDS */
+.card-custom {
+    border-radius: 15px;
+    transition: 0.3s;
+}
+.card-custom:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 20px #0dcaf0;
+}
+
+/* SOFTWARE */
 .software-card {
-    background:#fff;
-    border-radius:15px;
+    background:white;
     padding:20px;
+    border-radius:15px;
     text-align:center;
     transition:0.3s;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 .software-card:hover {
-    transform:translateY(-10px) scale(1.05);
-    box-shadow:0 0 20px rgba(13,110,253,0.6);
+    transform:scale(1.05);
+    box-shadow:0 0 20px #0d6efd;
 }
 
-/* ICON */
-.icon {
-    font-size:40px;
-    margin-bottom:10px;
+/* COUNTER */
+.counter {
+    font-size:2rem;
+    font-weight:bold;
 }
 
 /* REVIEW */
@@ -59,23 +81,10 @@ body {
     overflow-x:auto;
 }
 
-/* WHATSAPP */
-.whatsapp {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:12px 15px;
-    border-radius:50%;
-}
-
-/* ABOUT */
-.about-box {
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+/* BUTTON */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px cyan;
 }
 
 </style>
@@ -84,157 +93,178 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 <div class="container">
-    <span class="navbar-brand">Full Stack Trainer</span>
+    <a class="navbar-brand">Yash</a>
+
+    <div class="ms-auto">
+        <a href="#home" class="text-info mx-2"><i class="fas fa-home"></i></a>
+        <a href="#software" class="text-success mx-2"><i class="fas fa-download"></i></a>
+        <a href="#placement" class="text-warning mx-2"><i class="fas fa-briefcase"></i></a>
+        <a href="#contact" class="text-danger mx-2"><i class="fas fa-phone"></i></a>
+    </div>
 </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero text-center mt-5">
+<!-- HERO SLIDER -->
+<div id="slider" class="carousel slide" data-bs-ride="carousel">
+
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<div class="hero-slide d-flex justify-content-center align-items-center text-center">
+<div class="hero-content">
+<h1 class="glow-text">From Confusion to Confidence</h1>
+<p>Every expert was once a beginner</p>
+<button class="btn btn-info">Join Now</button>
+</div>
+</div>
+</div>
+
+<div class="carousel-item">
+<div class="hero-slide d-flex justify-content-center align-items-center text-center">
+<div class="hero-content">
+<h1 class="glow-text">Become Full Stack Developer 🚀</h1>
+<p>Learn with real projects</p>
+<button class="btn btn-warning">Start Now</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- COUNTERS -->
+<section class="text-center py-5">
 <div class="container">
-    <h1>Learn from the Best 🌟</h1>
-    <p>Transform your career</p>
+<div class="row">
+
+<div class="col-md-4">
+<div class="counter" id="students">0</div>
+<p>Students</p>
+</div>
+
+<div class="col-md-4">
+<div class="counter" id="rating">0</div>
+<p>Rating</p>
+</div>
+
+<div class="col-md-4">
+<div class="counter" id="placementCount">0</div>
+<p>Placements</p>
+</div>
+
+</div>
 </div>
 </section>
 
 <!-- SOFTWARE -->
-<section class="py-5">
+<section id="software" class="py-5 bg-light">
 <div class="container">
 
-<h2 class="text-center mb-4">💻 Software Downloads</h2>
+<h2 class="text-center mb-4">Software</h2>
 
-<input type="text" id="searchBox" class="form-control mb-4" placeholder="Search software...">
+<input type="text" id="search" class="form-control mb-4" placeholder="Search software...">
 
-<div class="row g-4" id="softwareList">
-
-<!-- CARD -->
-<div class="col-md-3 software-item">
-<div class="software-card">
-<div class="icon">💻</div>
-<h5>VS Code</h5>
-<button class="btn btn-success" onclick="download(this,'vscode')">
-Download (<span>0</span>)
-</button>
-</div>
-</div>
-
-<div class="col-md-3 software-item">
-<div class="software-card">
-<div class="icon">☕</div>
-<h5>Eclipse</h5>
-<button class="btn btn-success" onclick="download(this,'eclipse')">
-Download (<span>0</span>)
-</button>
-</div>
-</div>
-
-<div class="col-md-3 software-item">
-<div class="software-card">
-<div class="icon">🗄️</div>
-<h5>Workbench</h5>
-<button class="btn btn-success" onclick="download(this,'workbench')">
-Download (<span>0</span>)
-</button>
-</div>
-</div>
-
-<div class="col-md-3 software-item">
-<div class="software-card">
-<div class="icon">📝</div>
-<h5>Notepad++</h5>
-<button class="btn btn-success" onclick="download(this,'notepad')">
-Download (<span>0</span>)
-</button>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- JOB PLACEMENT -->
-<section class="bg-dark text-light py-5 text-center">
-<div class="container">
-<h2 class="text-warning">💼 Job Placement</h2>
-
-<div class="row g-4 mt-3">
-<div class="col-md-4"><div class="card p-3">Rahul – ₹6 LPA</div></div>
-<div class="col-md-4"><div class="card p-3">Priya – ₹5 LPA</div></div>
-<div class="col-md-4"><div class="card p-3">Arjun – ₹7 LPA</div></div>
-</div>
+<div class="row g-4" id="softwareContainer"></div>
 
 </div>
 </section>
 
-<!-- ABOUT -->
-<section class="py-5 text-center">
+<!-- PLACEMENT -->
+<section id="placement" class="py-5 bg-dark text-light text-center">
 <div class="container">
-<div class="about-box">
-<h3>About Us</h3>
-<p>We train students in Full Stack, Java, Python & SQL with real projects.</p>
+<h2>💼 Placements</h2>
+
+<div class="row mt-4">
+<div class="col-md-4"><div class="card p-3">Rahul ₹6LPA</div></div>
+<div class="col-md-4"><div class="card p-3">Priya ₹5LPA</div></div>
+<div class="col-md-4"><div class="card p-3">Arjun ₹7LPA</div></div>
 </div>
+
 </div>
 </section>
 
 <!-- REVIEWS -->
-<section class="bg-dark py-5">
+<section class="py-5">
 <div class="container">
-<h3 class="text-warning text-center">Reviews</h3>
+<h3 class="text-center">Reviews</h3>
 
 <div class="reviews-container mt-3">
 <div class="review-card">⭐⭐⭐⭐⭐ Best training</div>
 <div class="review-card">⭐⭐⭐⭐⭐ Got job</div>
-<div class="review-card">⭐⭐⭐⭐⭐ Very practical</div>
+<div class="review-card">⭐⭐⭐⭐⭐ Excellent</div>
 </div>
 
 </div>
 </section>
 
 <!-- CONTACT -->
-<section class="py-5 text-center">
+<section id="contact" class="py-5 text-center">
 <div class="container">
 <h3>Contact</h3>
 <p>📞 7350059415</p>
 </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-dark text-white text-center py-3">
-© 2025 Yashwant Software Solutions
-</footer>
-
-<a href="#" class="whatsapp">💬</a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
-/* DOWNLOAD COUNTER WITH LOCAL STORAGE */
-function download(btn, name){
-    let count = localStorage.getItem(name) || 0;
-    count++;
-    localStorage.setItem(name, count);
-    btn.querySelector("span").innerText = count;
+/* SOFTWARE DATA */
+const data = [
+{name:"VS Code", icon:"💻", key:"vscode", link:"https://code.visualstudio.com/"},
+{name:"Eclipse", icon:"☕", key:"eclipse", link:"https://www.eclipse.org/downloads/"},
+{name:"Workbench", icon:"🗄️", key:"workbench", link:"https://dev.mysql.com/downloads/workbench/"},
+{name:"Notepad++", icon:"📝", key:"notepad", link:"https://notepad-plus-plus.org/downloads/"}
+];
+
+/* RENDER */
+function render(list){
+let html="";
+list.forEach(item=>{
+let count = localStorage.getItem(item.key)||0;
+html+=`
+<div class="col-md-3">
+<div class="software-card">
+<div style="font-size:40px">${item.icon}</div>
+<h5>${item.name}</h5>
+<a href="${item.link}" target="_blank" onclick="download('${item.key}')" class="btn btn-success">
+Download (${count})
+</a>
+</div>
+</div>`;
+});
+document.getElementById("softwareContainer").innerHTML=html;
 }
 
-/* LOAD COUNTS */
-window.onload = () => {
-    document.querySelectorAll(".software-item").forEach(item=>{
-        let name = item.innerText.toLowerCase();
-        let key = name.includes("vs") ? "vscode" :
-                  name.includes("eclipse") ? "eclipse" :
-                  name.includes("workbench") ? "workbench" : "notepad";
-        let count = localStorage.getItem(key) || 0;
-        item.querySelector("span").innerText = count;
-    });
-};
+/* DOWNLOAD */
+function download(key){
+let c = localStorage.getItem(key)||0;
+localStorage.setItem(key, ++c);
+}
 
 /* SEARCH */
-document.getElementById("searchBox").addEventListener("keyup", function(){
-    let value = this.value.toLowerCase();
-    document.querySelectorAll(".software-item").forEach(item=>{
-        item.style.display = item.innerText.toLowerCase().includes(value) ? "block" : "none";
-    });
+document.getElementById("search").addEventListener("keyup",function(){
+let v=this.value.toLowerCase();
+render(data.filter(d=>d.name.toLowerCase().includes(v)));
 });
+
+/* COUNTER ANIMATION */
+function animate(id, target){
+let i=0;
+let interval=setInterval(()=>{
+i+=Math.ceil(target/50);
+if(i>=target){ i=target; clearInterval(interval); }
+document.getElementById(id).innerText=i;
+},30);
+}
+
+/* INIT */
+render(data);
+animate("students",500);
+animate("rating",5);
+animate("placementCount",120);
 
 </script>
 
