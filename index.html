@@ -56,6 +56,8 @@ body {
     min-height: 100vh;
     display:flex;
     align-items:center;
+    justify-content:center;
+    text-align:center;
     background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
     position: relative;
     color:white;
@@ -72,20 +74,28 @@ body {
     z-index: 1;
 }
 
-/* 3D IMAGE */
-.hero-img img {
-    width: 350px;
-}
-
 /* BUTTON */
 .btn-custom {
     background: linear-gradient(45deg,#00c6ff,#0072ff);
     color:white;
     border-radius:30px;
     padding:10px 25px;
+    transition:0.3s;
 }
 .btn-custom:hover {
     transform: scale(1.1);
+}
+
+/* SOCIAL ICONS */
+.social-icons i {
+    margin:10px;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.social-icons i:hover {
+    color:#00c6ff;
+    transform: scale(1.2);
 }
 
 /* SECTIONS */
@@ -100,14 +110,15 @@ section {
     margin:auto;
 }
 .content {
-    background:white;
+    background: rgba(255,255,255,0.9);
     padding:20px;
     margin:15px;
     border-radius:15px;
     transition:0.3s;
 }
 .content:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 /* DOWNLOAD */
@@ -129,10 +140,28 @@ section {
     color:#00c6ff;
 }
 
+/* CALL BUTTON */
+.call-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #00c6ff;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    z-index: 999;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 /* MOBILE */
 @media(max-width:768px){
 .hero { text-align:center; }
-.hero-img img { width:250px; margin-top:20px; }
 }
 
 </style>
@@ -165,16 +194,18 @@ section {
 
 <!-- HERO -->
 <section id="home" class="hero">
-<div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between hero-content">
+<div class="hero-content" data-aos="fade-up">
 
-<div data-aos="fade-right">
-<h1>Build Your Future in <span style="color:#00c6ff">.NET</span></h1>
-<p>Learn Full Stack Development with Real Projects</p>
-<button class="btn btn-custom">Start Learning</button>
-</div>
+<h1>Become a Job-Ready .NET Developer</h1>
+<p>100% Practical Training + Real Projects + Placement Support</p>
 
-<div class="hero-img" data-tilt>
-<img src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
+<a href="tel:7350059415" class="btn btn-custom mt-3">Call Now</a>
+
+<div class="social-icons mt-3">
+<i class="fab fa-facebook"></i>
+<i class="fab fa-linkedin"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-github"></i>
 </div>
 
 </div>
@@ -183,7 +214,34 @@ section {
 <!-- ABOUT -->
 <section id="about" data-aos="fade-up">
 <h2>About Us</h2>
-<p>Professional .NET training with real-world projects.</p>
+<p>Professional .NET Full Stack training with real-time experience.</p>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="bg-light">
+<h2>Why Choose Us?</h2>
+
+<div class="row mt-4">
+
+<div class="col-md-4">
+<i class="fa fa-laptop-code fa-2x text-primary"></i>
+<h5>Real Projects</h5>
+<p>Work on live industry projects</p>
+</div>
+
+<div class="col-md-4">
+<i class="fa fa-user-graduate fa-2x text-primary"></i>
+<h5>Expert Trainers</h5>
+<p>Learn from professionals</p>
+</div>
+
+<div class="col-md-4">
+<i class="fa fa-briefcase fa-2x text-primary"></i>
+<h5>Placement Support</h5>
+<p>Get job-ready training</p>
+</div>
+
+</div>
 </section>
 
 <!-- ROADMAP -->
@@ -192,30 +250,11 @@ section {
 
 <div class="timeline">
 
-<div class="content" data-tilt>
-<h4>Step 1</h4>
-<p>HTML, CSS, JavaScript</p>
-</div>
-
-<div class="content" data-tilt>
-<h4>Step 2</h4>
-<p>C# Programming</p>
-</div>
-
-<div class="content" data-tilt>
-<h4>Step 3</h4>
-<p>ASP.NET Core</p>
-</div>
-
-<div class="content" data-tilt>
-<h4>Step 4</h4>
-<p>SQL Server</p>
-</div>
-
-<div class="content" data-tilt>
-<h4>Step 5</h4>
-<p>Azure Deployment</p>
-</div>
+<div class="content" data-tilt><h4>Step 1</h4><p>HTML, CSS, JavaScript</p></div>
+<div class="content" data-tilt><h4>Step 2</h4><p>C# Programming</p></div>
+<div class="content" data-tilt><h4>Step 3</h4><p>ASP.NET Core</p></div>
+<div class="content" data-tilt><h4>Step 4</h4><p>SQL Server</p></div>
+<div class="content" data-tilt><h4>Step 5</h4><p>Azure Deployment</p></div>
 
 </div>
 </section>
@@ -225,21 +264,14 @@ section {
 <h2>Download Software</h2>
 
 <div class="download-box">
-<a href="https://visualstudio.microsoft.com/" class="btn btn-custom m-2">
-<i class="fa fa-download"></i> Visual Studio
-</a>
-
-<a href="https://dotnet.microsoft.com/download" class="btn btn-custom m-2">
-<i class="fa fa-download"></i> .NET SDK
-</a>
-
+<a href="https://visualstudio.microsoft.com/" class="btn btn-custom m-2"><i class="fa fa-download"></i> Visual Studio</a>
+<a href="https://dotnet.microsoft.com/download" class="btn btn-custom m-2"><i class="fa fa-download"></i> .NET SDK</a>
 </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact" data-aos="fade-left">
 <h2>Contact</h2>
-
 <p>Email: yashghole12@gmail.com</p>
 <p>Phone: 7350059415</p>
 
@@ -249,7 +281,6 @@ section {
 <i class="fab fa-linkedin"></i>
 <i class="fab fa-whatsapp"></i>
 </div>
-
 </section>
 
 <!-- FOOTER -->
@@ -257,10 +288,15 @@ section {
 © 2026 DotNetPro
 </footer>
 
+<!-- CALL BUTTON -->
+<a href="tel:7350059415" class="call-btn">
+<i class="fa fa-phone"></i>
+</a>
+
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
 <script>
 AOS.init({ duration:1000 });
 
