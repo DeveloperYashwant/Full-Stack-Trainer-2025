@@ -2,87 +2,112 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yashwant Software Solutions</title>
+<title>.NET Academy</title>
 
+<!-- Bootstrap + Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
 
-body { padding-top:70px; font-family:Segoe UI; scroll-behavior:smooth; }
+/* GLOBAL */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 20px;
+    text-align: center;
+}
 
 /* HERO */
 .hero {
-    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') center/cover;
-    color:white;
-    padding:120px 20px;
-    position:relative;
-}
-.hero::after {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-}
-.hero-content { position:relative; z-index:2; }
-
-.glow-text {
-    color:#ff2e63;
-    text-shadow:0 0 10px #ff2e63;
+    height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(135deg,#eef2f7,#ffffff);
 }
 
-/* NAVBAR ICON */
-.nav-link i { margin-right:5px; }
-
-/* CARDS */
-.card {
-    border-radius:15px;
-    transition:0.3s;
-}
-.card:hover {
-    transform:translateY(-10px) scale(1.05);
-    box-shadow:0 0 20px #0dcaf0;
-}
-
-/* SOFTWARE */
-.software-card {
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-    transition:0.3s;
-}
-.software-card:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 20px #0d6efd;
-}
-
-/* COUNTER */
-.counter {
-    font-size:2rem;
+.brand {
+    color:#0078d4;
     font-weight:bold;
 }
 
-/* REVIEW */
-.review-card {
-    min-width:250px;
-    background:#222;
-    padding:20px;
-    border-radius:10px;
-}
-
-/* SCROLL */
-.reviews-container {
-    display:flex;
-    gap:15px;
-    overflow-x:auto;
-}
-
 /* BUTTON */
-.btn:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 10px cyan;
+.btn-custom {
+    background: linear-gradient(45deg,#00c6ff,#0072ff);
+    color:white;
+    border-radius:30px;
+}
+
+/* ROADMAP */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: #0078d4;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+}
+
+.container-tl {
+    padding: 20px;
+    position: relative;
+    width: 50%;
+}
+
+.container-tl.left { left: 0; }
+.container-tl.right { left: 50%; }
+
+.container-tl::before {
+    content: " ";
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: #0078d4;
+    border-radius: 50%;
+}
+
+.right::before {
+    left: -10px;
+}
+
+.content {
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* DOWNLOAD */
+.download-box {
+    background:#f9f9f9;
+    padding:30px;
+    border-radius:15px;
+}
+
+/* CONTACT */
+.contact i {
+    font-size: 24px;
+    margin: 10px;
+    color:#0078d4;
 }
 
 </style>
@@ -91,166 +116,115 @@ body { padding-top:70px; font-family:Segoe UI; scroll-behavior:smooth; }
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top">
 <div class="container">
-<a class="navbar-brand fw-bold">Yash</a>
+<a class="navbar-brand" href="#">DotNetPro</a>
 
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="nav">
 <ul class="navbar-nav ms-auto">
-<li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i>Home</a></li>
-<li class="nav-item"><a href="#software" class="nav-link"><i class="fas fa-download"></i>Software</a></li>
-<li class="nav-item"><a href="#placement" class="nav-link"><i class="fas fa-briefcase"></i>Placement</a></li>
-<li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone"></i>Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#roadmap">Roadmap</a></li>
+<li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 </ul>
-</div>
 </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero text-center">
-<div class="container hero-content">
-<h1 class="fw-bold glow-text">From Confusion to Confidence</h1>
-<p class="lead">Every expert was once a beginner</p>
-<a href="#software" class="btn btn-info">Explore Software</a>
+<!-- HOME -->
+<section id="home" class="hero">
+<div>
+<h1>Build Your Future in <span class="brand">.NET</span></h1>
+<p>Learn Full Stack Development with Real Projects</p>
+<button class="btn btn-custom">Start Learning</button>
 </div>
 </section>
 
-<!-- COUNTERS -->
-<section class="text-center py-5">
-<div class="container">
-<div class="row">
-<div class="col-md-4"><div class="counter" id="students">0</div><p>Students</p></div>
-<div class="col-md-4"><div class="counter" id="rating">0</div><p>Rating</p></div>
-<div class="col-md-4"><div class="counter" id="placements">0</div><p>Placements</p></div>
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+<p>We provide industry-level .NET Full Stack training with real-time experience and placement support.</p>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+<h2>Learning Roadmap</h2>
+
+<div class="timeline">
+
+<div class="container-tl left">
+<div class="content">
+<h4>Step 1</h4>
+<p>Learn HTML, CSS, JavaScript</p>
 </div>
+</div>
+
+<div class="container-tl right">
+<div class="content">
+<h4>Step 2</h4>
+<p>C# Programming</p>
+</div>
+</div>
+
+<div class="container-tl left">
+<div class="content">
+<h4>Step 3</h4>
+<p>ASP.NET Core</p>
+</div>
+</div>
+
+<div class="container-tl right">
+<div class="content">
+<h4>Step 4</h4>
+<p>SQL Server</p>
+</div>
+</div>
+
+<div class="container-tl left">
+<div class="content">
+<h4>Step 5</h4>
+<p>Azure Deployment</p>
+</div>
+</div>
+
 </div>
 </section>
 
-<!-- COURSES -->
-<section class="py-5">
-<div class="container">
-<h2 class="text-center mb-4">Courses</h2>
+<!-- DOWNLOAD -->
+<section id="download">
+<h2>Download Software</h2>
 
-<div class="row g-4">
-<div class="col-md-4"><div class="card p-3 text-center"><i class="fab fa-html5 fa-2x"></i><h5>Frontend</h5></div></div>
-<div class="col-md-4"><div class="card p-3 text-center"><i class="fab fa-java fa-2x"></i><h5>Backend</h5></div></div>
-<div class="col-md-4"><div class="card p-3 text-center"><i class="fas fa-cloud fa-2x"></i><h5>Cloud</h5></div></div>
-</div>
+<div class="download-box">
+<p>Get required tools for .NET development:</p>
 
-</div>
-</section>
+<a href="https://visualstudio.microsoft.com/" class="btn btn-custom m-2">
+<i class="fa-solid fa-download"></i> Visual Studio
+</a>
 
-<!-- SOFTWARE -->
-<section id="software" class="py-5 bg-light">
-<div class="container">
+<a href="https://dotnet.microsoft.com/download" class="btn btn-custom m-2">
+<i class="fa-solid fa-download"></i> .NET SDK
+</a>
 
-<h2 class="text-center mb-4">Software</h2>
-<input type="text" id="search" class="form-control mb-4" placeholder="Search software...">
+<a href="https://www.microsoft.com/sql-server" class="btn btn-custom m-2">
+<i class="fa-solid fa-download"></i> SQL Server
+</a>
 
-<div class="row g-4" id="softwareContainer"></div>
-
-</div>
-</section>
-
-<!-- PLACEMENT -->
-<section id="placement" class="py-5 bg-dark text-light text-center">
-<div class="container">
-<h2>💼 Placement</h2>
-<div class="row mt-3">
-<div class="col-md-4"><div class="card p-3">Rahul ₹6LPA</div></div>
-<div class="col-md-4"><div class="card p-3">Priya ₹5LPA</div></div>
-<div class="col-md-4"><div class="card p-3">Arjun ₹7LPA</div></div>
-</div>
-</div>
-</section>
-
-<!-- REVIEWS -->
-<section class="bg-dark text-light py-5">
-<div class="container">
-<h2 class="text-center">Reviews</h2>
-<div class="reviews-container mt-3">
-<div class="review-card">⭐⭐⭐⭐⭐ Great teaching</div>
-<div class="review-card">⭐⭐⭐⭐⭐ Very helpful</div>
-<div class="review-card">⭐⭐⭐⭐⭐ Best trainer</div>
-</div>
 </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-5 text-center">
-<div class="container">
-<h2>Contact</h2>
-<p>📞 7208921898</p>
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+
+<p>Email: info@dotnetpro.com</p>
+
+<div>
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-linkedin"></i>
+<i class="fa-brands fa-whatsapp"></i>
 </div>
+
 </section>
-
-<footer class="bg-dark text-white text-center py-3">
-© 2025 Yashwant Software Solutions
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-/* DATA */
-const software = [
-{name:"VS Code",key:"vscode",link:"https://code.visualstudio.com/"},
-{name:"Eclipse",key:"eclipse",link:"https://www.eclipse.org/downloads/"},
-{name:"Workbench",key:"workbench",link:"https://dev.mysql.com/downloads/workbench/"},
-{name:"Notepad++",key:"notepad",link:"https://notepad-plus-plus.org/downloads/"}
-];
-
-/* RENDER */
-function render(list){
-let html="";
-list.forEach(s=>{
-let c=localStorage.getItem(s.key)||0;
-html+=`
-<div class="col-md-3">
-<div class="software-card">
-<h5>${s.name}</h5>
-<a href="${s.link}" target="_blank" onclick="download('${s.key}')" class="btn btn-success">
-Download (${c})
-</a>
-</div>
-</div>`;
-});
-document.getElementById("softwareContainer").innerHTML=html;
-}
-
-/* DOWNLOAD */
-function download(k){
-let c=localStorage.getItem(k)||0;
-localStorage.setItem(k,++c);
-}
-
-/* SEARCH */
-document.getElementById("search").addEventListener("keyup",function(){
-let v=this.value.toLowerCase();
-render(software.filter(s=>s.name.toLowerCase().includes(v)));
-});
-
-/* COUNTER */
-function animate(id,target){
-let i=0;
-let int=setInterval(()=>{
-i+=Math.ceil(target/50);
-if(i>=target){i=target;clearInterval(int);}
-document.getElementById(id).innerText=i;
-},30);
-}
-
-/* INIT */
-render(software);
-animate("students",500);
-animate("rating",5);
-animate("placements",120);
-
-</script>
 
 </body>
 </html>
